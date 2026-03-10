@@ -1,0 +1,17 @@
+# Dashboard Enhancements
+
+- [x] 1. Fixed Header (Sticky Table Header)
+- [x] 2. Editable Comments Field with Save Button
+- [x] 3. Include Reference Images
+- [x] 4. PDF Export Button (Minuta Format with Attendees)
+- [x] 5. Update Logos
+- [x] 6. Swap "Semana Actual" and "Semana Anterior" columns
+- [x] 7. Integrate full reference content per point
+- [x] 8. Sort list sequentially by ID (1 to 37)
+
+## Refinements
+- [ ] 9. Move comment input to "Action Items" box.
+- [ ] 10. Display comment value in the PDF export.
+- [ ] 11. Reorder columns: ID, Sistema, A cargo de, Estatus, Previa, Actual, Ref.
+- [ ] 12. Show full text content in Semana Previa / Actual (remove truncation).
+- [ ] 13. Add Lightbox / Pop-up view for reference images.

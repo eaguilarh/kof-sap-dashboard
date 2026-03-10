@@ -1,0 +1,41 @@
+# Implementation Plan: Dashboard Enhancements
+
+## Goal Description
+Enhance the KOF SAP dashboard with features requested by the user: sticky headers, an editable comments section with save functionality, reference image integration, PDF export with attendees list, logo updates, column swapping (Current/Previous week), and sorting by ID instead of status.
+
+## Proposed Changes
+
+### Configuration and Setup
+- Create an `img/` folder logic in the HTML where the user can dump the provided images (`kof-logo.png`, `dxc-logo.png`, `ref_1.png`, etc.).
+
+### HTML ([index.html](file:///C:/Users/eaguilarher2/Documents/Antigravity/kof-sap-dashboard/index.html))
+- **[MODIFY]** [index.html](file:///C:/Users/eaguilarher2/Documents/Antigravity/kof-sap-dashboard/index.html):
+  - Swap the headers "Semana Actual" and "Semana Anterior".
+  - Replace CSS-based logos with image tags referencing `img/kof-logo.png` and `img/dxc-logo.png`.
+  - Add an "Exportar a Minuta" button in the `.header-actions`.
+  - Add a hidden section for the PDF Minute containing the hardcoded list of 33 attendees.
+  - Add the `html2pdf.js` CDN script.
+
+### CSS ([css/styles.css](file:///C:/Users/eaguilarher2/Documents/Antigravity/kof-sap-dashboard/css/styles.css))
+- **[MODIFY]** [css/styles.css](file:///C:/Users/eaguilarher2/Documents/Antigravity/kof-sap-dashboard/css/styles.css):
+  - Add `position: sticky; top: 0; z-index: 10;` to `th` and limit `.table-responsive` height with `overflow-y: auto`.
+  - Add styles for the PDF layout (hidden by default, visible during print/export).
+  - Add styles for the new "Agregar Comentario" input and check button.
+
+### JavaScript ([js/app.js](file:///C:/Users/eaguilarher2/Documents/Antigravity/kof-sap-dashboard/js/app.js))
+- **[MODIFY]** [js/app.js](file:///C:/Users/eaguilarher2/Documents/Antigravity/kof-sap-dashboard/js/app.js):
+  - Change the sort logic to sort by `parseInt(a.id) - parseInt(b.id)`.
+  - Swap the generation of the `td` columns for `prevWeek` and `currentWeek`.
+  - In the expanded details (`sub-row`), add an input text field and a save button (`<button onclick="addComment(${row.id})"><i class="fa-solid fa-check"></i></button>`).
+  - Implement `addComment(id)` to append the input text to the system's `referenceInfo` and re-render.
+  - Implement the PDF export logic using `html2pdf` grabbing the necessary DOM elements (Header, Attendees, Table).
+  - Add logic to conditionally render `<img src="img/ref_${row.id}.png">` in the reference box if `id` is in `[1, 18, 22, 25, 30, 31, 35]`.
+
+## Verification Plan
+1. **Automated Tests**:
+   - Run a local server and review the UI.
+2. **Manual Verification**:
+   - Verify table header remains sticky while scrolling.
+   - Verify commenting appends text correctly upon clicking the checkmark.
+   - Verify "Exportar" generates a nicely formatted PDF with the attendees.
+   - Verify columns are swapped and items are sorted 1 to 37.
