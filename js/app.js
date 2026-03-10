@@ -505,7 +505,8 @@ function renderDashboard(dataArray) {
         if (imageCounts[row.id] && imageCounts[row.id] > 0) {
             let galleryHTML = '<div class="ref-gallery">';
             for (let i = 1; i <= imageCounts[row.id]; i++) {
-                const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${row.id}_${i}`]) ? window.DashboardImages[`ref_${row.id}_${i}`] : `img/ref_${row.id}_${i}.png`;
+                const timestamp = new Date().getTime(); // Cache busting
+                const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${row.id}_${i}`]) ? window.DashboardImages[`ref_${row.id}_${i}`] : `img/ref_${row.id}_${i}.png?v=${timestamp}`;
                 galleryHTML += `<img src="${imgSrc}" class="ref-thumbnail" onclick="openLightbox(this.src)" title="Clic para ampliar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                 <span class="fallback-text" style="display:none; color: var(--text-muted); font-size: 11px;">(Falta img/ref_${row.id}_${i}.png)</span>`;
             }
@@ -754,7 +755,8 @@ window.generatePDF = () => {
                 let tdItems = '';
                 const tdWidth = 100 / imageCounts[item.id];
                 for (let i = 1; i <= imageCounts[item.id]; i++) {
-                    const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png`;
+                    const timestamp = new Date().getTime(); // Cache busting
+                    const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
                     tdItems += `
                             <td style="width: ${tdWidth}%; padding: 0 4px; text-align: center; vertical-align: top;">
                                 <img src="${imgSrc}" style="width: 100%; max-height: 650px; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; background-color: white;">
@@ -780,7 +782,8 @@ window.generatePDF = () => {
             } else {
                 if (hasImages) {
                     for (let i = 1; i <= imageCounts[item.id]; i++) {
-                        const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png`;
+                        const timestamp = new Date().getTime(); // Cache busting
+                        const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
 
                         stackedImages += `
                                 <div style="page-break-inside: avoid; break-inside: avoid; display: block; margin-bottom: 12px; padding: 0 10px;">
