@@ -354,7 +354,7 @@ const dashboardData = [
         customComment: ""
     },
     {
-        id: "35", system: "Recalendarización del Job de transportes",
+        id: "35", system: "Ajuste de usuarios DDIC a tipo System",
         owner: "Luis Muñoz / Teresa López", status: "En Proceso", sla: "Minor",
         currentWeek: "10/3 - Se completó la configuración del usuario DDIC a tipo System en los ambientes OnPremise. Confirmar si es posible cerrar este punto.",
         prevWeek: "3/3 - En seguimiento para la terminación de configuración en todos los sistemas OnPremise el usuario DDIC como SYSTEM.",
@@ -384,13 +384,8 @@ const dashboardData = [
 
 // Reference images dictionary (ID: Number of images)
 const imageCounts = {
-    "1": 2,
-    "18": 8,
-    "22": 2,
-    "25": 2,
-    "30": 5,
-    "31": 2,
-    "35": 1
+    // Agrega aquí los IDs y cantidad de imágenes si hay nuevas para esta semana
+    // Ejemplo: "12": 2
 };
 
 // Attendees for Minuta
