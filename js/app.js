@@ -700,6 +700,20 @@ window.closeLightbox = (event) => {
     document.getElementById('image-lightbox').classList.remove('active');
 };
 
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('image-lightbox');
+    if (lightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') {
+            window.changeLightboxImage(-1);
+        } else if (e.key === 'ArrowRight') {
+            window.changeLightboxImage(1);
+        } else if (e.key === 'Escape') {
+            window.closeLightbox();
+        }
+    }
+});
+
 // Additional Points Logic
 window.saveAdditionalPoint = () => {
     const inputEl = document.getElementById('additional-points-input');
