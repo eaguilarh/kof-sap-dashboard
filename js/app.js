@@ -15,7 +15,7 @@ window.toggleDarkMode = () => {
 
 // Helper to format Spanish dates dynamically (Miércoles a Martes)
 const getDynamicPeriod = () => {
-    return 'Periodo: 11 al 17 mar 2026';
+    return 'Periodo: 4 al 10 de Mar 2026';
 };
 
 const dynamicPeriodText = getDynamicPeriod();
