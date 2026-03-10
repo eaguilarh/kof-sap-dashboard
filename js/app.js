@@ -33,7 +33,7 @@ const dashboardData = [
     {
         id: "2", system: "Seguimiento de HANA Comercial BCP",
         owner: "Carlos Castillo / Daniel Ponce", status: "Con Incidentes", sla: "Minor",
-        currentWeek: "10/3 - Lunes 09 de marzo. Se presentÃ³ la caÃ­da del ambiente Java BCP. Se tiene un mensaje a SAP 109190/2026 activo para conocer la causa raÃ­z.",
+        currentWeek: "10/3 - Lunes 09 de marzo. Se presentó la caída del ambiente Java BCP. Se tiene un mensaje a SAP 109190/2026 activo para conocer la causa raíz.",
         prevWeek: "3/3 - Sin incidentes en el ambiente productivo y ambientes no productivos.",
         actionItem: "Ninguno", actionOwner: "-", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado según descripción. | Prioridad: Baja",
@@ -51,8 +51,8 @@ const dashboardData = [
     {
         id: "4", system: "Plan de Mantenimiento",
         owner: "TQS's", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - RFC relevantes por realizar ON PREMISE: Aud updt de SO y cierre de vulnerabilidades encl hcvspn20 VSP 805, SBX-RVR, Vcopy RAP | Update de SO y cierre de vulnerabilidades server RVP | AUD Update de SO y cierre de vulnerabilidades en Nodo Adoptivo RAP haerppn3 ERPNX PRD / Enclosure 51-52 (Apps RVP, RAT y RAZ) / nodo adoptivo de CRM-MEX y BCP-BC4 | InstalaciÃ³n de parches de seguridad Windows en DS PRD | RAP ReorganizaciÃ³n Semanal de objetos de BD en horarios discontinuos | ActualizaciÃ³n support packages SPAM - ST-PI - ST-API - SAP CAS UCD y UCP. NUBE AZURE: Monthly Patching to fix vulnerability and remove ERM client package on Prod - CPR Servers / Pre-Prod S/4 Servers / Prod - MDG Servers / Prod - IAC Servers | InstalaciÃ³n de parches de seguridad Windows en MII Mexico, Colombia, Centroamerica, Brasil y JDV | Ajuste de parÃ¡metros para remediaciÃ³n de vulnerabilidad HTTP Security Header is not detected en MII Colombia, CentroamÃ©rica, Brasil y JDV | InstalaciÃ³n Add On GRC Access Control 12 TAR / T4P. RFC relevantes realizados en la semana anterior ON PREMISE: RAP ReorganizaciÃ³n Semanal de objetos de BD en horarios discontinuos. NUBE AZURE: Monthly OS patching to fix vulnerability and remove ERM client package on Pre-Prod GRC y SLT Servers | Pre-Prod - CPR | SCM-SMR & EWM-EMR Servers | DR - S/4 Servers | QA- S/4.",
-        prevWeek: "3/3 - RFC relevantes por realizar. ON PREMISE: RAP ReorganizaciÃ³n Semanal de objetos de BD en horarios discontinuos. NUBE AZURE: Monthly OS patching to fix vulnerability and remove ERM client package on Pre-Prod GRC y SLT Servers | Pre-Prod - CPR | SCM-SMR & EWM-EMR Servers | DR - S/4 Servers | QA- S/4. RFC relevantes realizados en la semana anterior. ON PREMISE: ActualizaciÃ³n support packages SPAM - ST-PI - ST-A/PI - SAP BW Comercial y Financiero | Updt de SO y cierre de vulnerabilidades BCD y BCD, Enclosure 11 | Update SLES + CSUR + Drivers EPM QA TRIARA QUERETARO . NUBE AZURE: Monthly OS patching to fix vulnerability and remove ERM client package on MDG (QAS, DR), Zscaler (DR), CyberArk (Windows y Linux), GRC (QAS), CPI (QAS), SCM & EWM (QAS), BRIM (DR), SLT (SR), SLD (PRD), ADS (PRD) | Closure of Vulnerability (Medium) (QID 338371) : Updating Oracle Java to the latest version ibz411 on SolMan | Actualizar de SAP Host Agent a SP09 en MII MSC.",
+        currentWeek: "10/3 - RFC relevantes por realizar ON PREMISE: Aud updt de SO y cierre de vulnerabilidades encl hcvspn20 VSP 805, SBX-RVR, Vcopy RAP | Update de SO y cierre de vulnerabilidades server RVP | AUD Update de SO y cierre de vulnerabilidades en Nodo Adoptivo RAP haerppn3 ERPNX PRD / Enclosure 51-52 (Apps RVP, RAT y RAZ) / nodo adoptivo de CRM-MEX y BCP-BC4 | Instalación de parches de seguridad Windows en DS PRD | RAP Reorganización Semanal de objetos de BD en horarios discontinuos | Actualización support packages SPAM - ST-PI - ST-API - SAP CAS UCD y UCP. NUBE AZURE: Monthly Patching to fix vulnerability and remove ERM client package on Prod - CPR Servers / Pre-Prod S/4 Servers / Prod - MDG Servers / Prod - IAC Servers | Instalación de parches de seguridad Windows en MII Mexico, Colombia, Centroamerica, Brasil y JDV | Ajuste de parámetros para remediación de vulnerabilidad HTTP Security Header is not detected en MII Colombia, Centroamérica, Brasil y JDV | Instalación Add On GRC Access Control 12 TAR / T4P. RFC relevantes realizados en la semana anterior ON PREMISE: RAP Reorganización Semanal de objetos de BD en horarios discontinuos. NUBE AZURE: Monthly OS patching to fix vulnerability and remove ERM client package on Pre-Prod GRC y SLT Servers | Pre-Prod - CPR | SCM-SMR & EWM-EMR Servers | DR - S/4 Servers | QA- S/4.",
+        prevWeek: "3/3 - RFC relevantes por realizar. ON PREMISE: RAP Reorganización Semanal de objetos de BD en horarios discontinuos. NUBE AZURE: Monthly OS patching to fix vulnerability and remove ERM client package on Pre-Prod GRC y SLT Servers | Pre-Prod - CPR | SCM-SMR & EWM-EMR Servers | DR - S/4 Servers | QA- S/4. RFC relevantes realizados en la semana anterior. ON PREMISE: Actualización support packages SPAM - ST-PI - ST-A/PI - SAP BW Comercial y Financiero | Updt de SO y cierre de vulnerabilidades BCD y BCD, Enclosure 11 | Update SLES + CSUR + Drivers EPM QA TRIARA QUERETARO . NUBE AZURE: Monthly OS patching to fix vulnerability and remove ERM client package on MDG (QAS, DR), Zscaler (DR), CyberArk (Windows y Linux), GRC (QAS), CPI (QAS), SCM & EWM (QAS), BRIM (DR), SLT (SR), SLD (PRD), ADS (PRD) | Closure of Vulnerability (Medium) (QID 338371) : Updating Oracle Java to the latest version ibz411 on SolMan | Actualizar de SAP Host Agent a SP09 en MII MSC.",
         actionItem: "Actualizar SAP Host Agent a SP09 en MII MSC.", actionOwner: "TQS", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -60,8 +60,8 @@ const dashboardData = [
     {
         id: "5", system: "RCA's Pendientes",
         owner: "Luis Muñoz / TQS's", status: "En Proceso", sla: "Critical",
-        currentWeek: "10/3 - 01. Incidente IN0129998 Incidente en PI Productivo 22feb26. En espera de comentarios por parte del Coordinador. 02.RCA PRB0130244 Failover SAP SAP Hana 05mar26. En documentaciÃ³n. 03.RCA problema de acceso Portal BW 09mar26. En documentaciÃ³n.",
-        prevWeek: "3/3 - 01. RCA PRB0129150 Reinicio de DS PRD PKS por saturaciÃ³n de unidad T / en servidor de BD 26feb26. Se libera la versiÃ³n final. 02. RCA Informativo - Incidente en PI Productivo 22feb26. En proceso de elaboraciÃ³n.",
+        currentWeek: "10/3 - 01. Incidente IN0129998 Incidente en PI Productivo 22feb26. En espera de comentarios por parte del Coordinador. 02.RCA PRB0130244 Failover SAP SAP Hana 05mar26. En documentación. 03.RCA problema de acceso Portal BW 09mar26. En documentación.",
+        prevWeek: "3/3 - 01. RCA PRB0129150 Reinicio de DS PRD PKS por saturación de unidad T / en servidor de BD 26feb26. Se libera la versión final. 02. RCA Informativo - Incidente en PI Productivo 22feb26. En proceso de elaboración.",
         actionItem: "En espera de comentarios del Coordinador y elaboración de RCA PI.", actionOwner: "TQS's", commitDate: "2026-03-05",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado según descripción | Prioridad: P1 - Crítica",
         customComment: ""
@@ -69,8 +69,8 @@ const dashboardData = [
     {
         id: "6", system: "Servicios y Pendientes de SAP Max Attention",
         owner: "SAP Max Attention", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - Servicios: Servicio de salvaguarda migraciÃ³n SO Aplicativo RAP - Servicio cancelado - Viridiana Cortizo. Servicio de QA para la estrategia de migraciones Tech Refresh - Requerimiento en revisiÃ³n por parte de SAP - Viridiana Cortizo. RevisiÃ³n Plan de servicios SAP MaxAttention 2026 KOF IT - MiÃ©rcoles 11 Marzo - Eduardo Perez. En proceso: Juntas de seguimiento a recomendaciones servicios MaxAttention - SAP MaxAttention & TQS, Ãºltima reuniÃ³n 6 de Marzo, prÃ³xima reuniÃ³n 20 de Marzo.",
-        prevWeek: "3/3 - Servicios: Servicio de salvaguarda migraciÃ³n SO aplicativo BAP - Servicio en preparaciÃ³n. Junta Domingo 08 de Marzo 10:00. - Viridiana Cortizo. Servicio de MigraciÃ³n SO Oracle ECC Dry Run Fase 2 - Se llevÃ³ a cabo el cierre del servicio el viernes 27 de Febrero - Se enviÃ³ Reporte Final - Viridiana Cortizo. HyperCare SAP bundle patch ECC - Se entregÃ³ servicio de HyperCare para la instalaciÃ³n 21 y 22 de Febrero - Se enviÃ³ reporte final - TalÃ­a Rosas. En proceso juntas de seguimiento a recomendaciones servicios MaxAttention - SAP MaxAttention & TQS, Ãºltima reuniÃ³n 21 de Febrero, prÃ³xima reuniÃ³n 6 de Marzo. VM solicita un servicio de QA para la estrategia de migraciones (Todas las fases).",
+        currentWeek: "10/3 - Servicios: Servicio de salvaguarda migración SO Aplicativo RAP - Servicio cancelado - Viridiana Cortizo. Servicio de QA para la estrategia de migraciones Tech Refresh - Requerimiento en revisión por parte de SAP - Viridiana Cortizo. Revisión Plan de servicios SAP MaxAttention 2026 KOF IT - Miércoles 11 Marzo - Eduardo Perez. En proceso: Juntas de seguimiento a recomendaciones servicios MaxAttention - SAP MaxAttention & TQS, última reunión 6 de Marzo, próxima reunión 20 de Marzo.",
+        prevWeek: "3/3 - Servicios: Servicio de salvaguarda migración SO aplicativo BAP - Servicio en preparación. Junta Domingo 08 de Marzo 10:00. - Viridiana Cortizo. Servicio de Migración SO Oracle ECC Dry Run Fase 2 - Se llevó a cabo el cierre del servicio el viernes 27 de Febrero - Se envió Reporte Final - Viridiana Cortizo. HyperCare SAP bundle patch ECC - Se entregó servicio de HyperCare para la instalación 21 y 22 de Febrero - Se envió reporte final - Talía Rosas. En proceso juntas de seguimiento a recomendaciones servicios MaxAttention - SAP MaxAttention & TQS, última reunión 21 de Febrero, próxima reunión 6 de Marzo. VM solicita un servicio de QA para la estrategia de migraciones (Todas las fases).",
         actionItem: "Juntas de seguimiento en proceso.", actionOwner: "SAP Max Attention", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -87,8 +87,8 @@ const dashboardData = [
     {
         id: "8", system: "Mapear Aplicativos / Actualización Inventarios",
         owner: "Iván Jesús", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - En esta semana se compartirÃ¡ documento al cierre de febrero.",
-        prevWeek: "3/3 - La siguiente semana se compartirÃ¡ documento al cierre de febrero.",
+        currentWeek: "10/3 - En esta semana se compartirá documento al cierre de febrero.",
+        prevWeek: "3/3 - La siguiente semana se compartirá documento al cierre de febrero.",
         actionItem: "Seguimiento confirmación", actionOwner: "Iván Jesús", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -96,8 +96,8 @@ const dashboardData = [
     {
         id: "9", system: "ECC - S4",
         owner: "Héctor Medina / Viridiana Cortizo", status: "Con Incidentes", sla: "Minor",
-        currentWeek: "10/3 - RLP, sin incidentes en ambientes productivos y no productivos. RAP, sin incidentes ambientes productivos y no productivos. S4P, El miÃ©rcoles 04 de marzo se tuvo incidente con HANA de S4P.",
-        prevWeek: "3/3 - RLP, sin incidentes en ambientes productivos y no productivos. RAP, sin incidentes ambientes productivos y no productivos, se procede con la exclusiÃ³n del sistema RVP de la ruta de transportes del ECC. S4P, sin incidentes en ambientes productivos y no productivos.",
+        currentWeek: "10/3 - RLP, sin incidentes en ambientes productivos y no productivos. RAP, sin incidentes ambientes productivos y no productivos. S4P, El miércoles 04 de marzo se tuvo incidente con HANA de S4P.",
+        prevWeek: "3/3 - RLP, sin incidentes en ambientes productivos y no productivos. RAP, sin incidentes ambientes productivos y no productivos, se procede con la exclusión del sistema RVP de la ruta de transportes del ECC. S4P, sin incidentes en ambientes productivos y no productivos.",
         actionItem: "Ninguno", actionOwner: "-", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado según descripción | Prioridad: Baja",
         customComment: ""
@@ -106,7 +106,7 @@ const dashboardData = [
         id: "10", system: "Problemas en BODS",
         owner: "Guadalupe Argüelles / Germán Bravo", status: "Sin Incidentes", sla: "Minor",
         currentWeek: "10/3 - Sin incidentes en ambientes productivos y no productivos.",
-        prevWeek: "3/3 - Sin incidentes en ambientes productivos y no productivos. 3/3 - El dÃ­a 3 de Marzo se reportÃ³ interrupciÃ³n del servicio y lentitud, 1 de Marzo Se brindÃ³ apoyo para reinicio de servers node y aplicaciÃ³n/BD para MII por problemas en varios fluxes de producciÃ³n, fue un error de fechas a nivel funcional. ContinÃºa el apoyo para revisiÃ³n de servers node en AWS.",
+        prevWeek: "3/3 - Sin incidentes en ambientes productivos y no productivos. 3/3 - El día 3 de Marzo se reportó interrupción del servicio y lentitud, 1 de Marzo Se brindó apoyo para reinicio de servers node y aplicación/BD para MII por problemas en varios fluxes de producción, fue un error de fechas a nivel funcional. Continúa el apoyo para revisión de servers node en AWS.",
         actionItem: "Ninguno", actionOwner: "-", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado según descripción | Prioridad: Baja",
         customComment: ""
@@ -168,8 +168,8 @@ const dashboardData = [
     {
         id: "17", system: "Implementación rec. TPO",
         owner: "TQS / Coordinadores", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - Servicios de TPO para seguimiento en la implementaciÃ³n de recomendaciones: SAP SHP/SOL (Solution Manager) RAG 06/03/2026 SAP TR (TPO) RAG 80% 06/03/2026 SAP CRM CC (HUK, TR y RVP) TPG 21/01/2026 SAP ECC CRM (CPP y CEP) TPO 26/02/2026",
-        prevWeek: "3/3 - Servicios de TPO para seguimiento en la implementaciÃ³n de recomendaciones: SAP SHP/SOL (Solution Manager) RAG 18/01/2026 SAP ECC/TR (CPP) TPO 02/07/2026 SAP ECC/TR CC (CTQ, FIN y RVP) TPO 21/01/2026 SAP ECC CRM (CPP y CEP) TPO 26/02/2026",
+        currentWeek: "10/3 - Servicios de TPO para seguimiento en la implementación de recomendaciones: SAP SHP/SOL (Solution Manager) RAG 06/03/2026 SAP TR (TPO) RAG 80% 06/03/2026 SAP CRM CC (HUK, TR y RVP) TPG 21/01/2026 SAP ECC CRM (CPP y CEP) TPO 26/02/2026",
+        prevWeek: "3/3 - Servicios de TPO para seguimiento en la implementación de recomendaciones: SAP SHP/SOL (Solution Manager) RAG 18/01/2026 SAP ECC/TR (CPP) TPO 02/07/2026 SAP ECC/TR CC (CTQ, FIN y RVP) TPO 21/01/2026 SAP ECC CRM (CPP y CEP) TPO 26/02/2026",
         actionItem: "Continuar con recomendacioens TPO", actionOwner: "TQS", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -187,7 +187,7 @@ const dashboardData = [
         id: "19", system: "Seguimiento KPI respaldos / parches",
         owner: "Luis Muñoz / Teresa López", status: "En Proceso", sla: "Minor",
         currentWeek: "10/3 - Generando el reporte del mes de febrero, se libera el 13 de marzo.",
-        prevWeek: "3/3 - Se revisÃ³ el reporte del mes de enero el 26 de febrero. Se libera el reporte el 27 de febrero.",
+        prevWeek: "3/3 - Se revisó el reporte del mes de enero el 26 de febrero. Se libera el reporte el 27 de febrero.",
         actionItem: "Alineamiento y cierre de mes.", actionOwner: "Teresa López", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -195,8 +195,8 @@ const dashboardData = [
     {
         id: "20", system: "Depuración tablas Z en RAP y RLP",
         owner: "Héctor Medina / Viridiana C.", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - DepuraciÃ³n Zs en RAP y RLP. En espera de mÃ¡s tablas depuradas por parte de los paÃ­ses.",
-        prevWeek: "3/3 - DepuraciÃ³n Zs en RAP y RLP. En espera de mÃ¡s tablas depuradas por parte de los paÃ­ses.",
+        currentWeek: "10/3 - Depuración Zs en RAP y RLP. En espera de más tablas depuradas por parte de los países.",
+        prevWeek: "3/3 - Depuración Zs en RAP y RLP. En espera de más tablas depuradas por parte de los países.",
         actionItem: "Seguimiento con países para liberación.", actionOwner: "Héctor Medina", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -213,8 +213,8 @@ const dashboardData = [
     {
         id: "22", system: "CFIN - Demanda de espacio en disco RAP-RLP",
         owner: "Héctor Medina / Iván Jesús", status: "En Proceso", sla: "Critical",
-        currentWeek: "10/3 - RAP - Datos. Asignado 3.43 TB. LÃ­mite 2.54 TB. Usado 2.94 TB. Uso Localizado en base a cantidad de registros: 2.44 TB. RLP - Datos. Asignado 2.12 TB. LÃ­mite 1.70 TB. Usado 2.50 TB. Uso Localizado en base a cantidad de registros: 1.83 TB",
-        prevWeek: "3/3 - RAP - Datos. Asignado 3.43 TB. LÃ­mite 2.54 TB. Usado 2.94 TB. Uso Localizado en base a cantidad de registros: 1.47 TB. RLP - Datos. Asignado 2.12 TB. LÃ­mite 1.70 TB. Usado 2.50 TB. Uso Localizado en base a cantidad de registros: 1.76 TB.",
+        currentWeek: "10/3 - RAP - Datos. Asignado 3.43 TB. Límite 2.54 TB. Usado 2.94 TB. Uso Localizado en base a cantidad de registros: 2.44 TB. RLP - Datos. Asignado 2.12 TB. Límite 1.70 TB. Usado 2.50 TB. Uso Localizado en base a cantidad de registros: 1.83 TB",
+        prevWeek: "3/3 - RAP - Datos. Asignado 3.43 TB. Límite 2.54 TB. Usado 2.94 TB. Uso Localizado en base a cantidad de registros: 1.47 TB. RLP - Datos. Asignado 2.12 TB. Límite 1.70 TB. Usado 2.50 TB. Uso Localizado en base a cantidad de registros: 1.76 TB.",
         actionItem: "Liberar espacio, excediendo límite.", actionOwner: "Héctor Medina", commitDate: "2026-03-02",
         referenceInfo: "Tipo: Operativo | Justificación SLA: CFIN: uso de disco supera el límite (Usado > Limite). | Prioridad: P1 - Crítica",
         customComment: ""
@@ -222,8 +222,8 @@ const dashboardData = [
     {
         id: "23", system: "Certificación Trim. de cuentas Unix",
         owner: "Luis Muñoz / Teresa López", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - En seguimiento de proceso del Q1 de 2026. En revisiÃ³n de la informaciÃ³n mensual previo a entrega.",
-        prevWeek: "3/3 - En seguimiento de proceso del Q1 de 2026. Se enviÃ³ la informaciÃ³n mensual.",
+        currentWeek: "10/3 - En seguimiento de proceso del Q1 de 2026. En revisión de la información mensual previo a entrega.",
+        prevWeek: "3/3 - En seguimiento de proceso del Q1 de 2026. Se envió la información mensual.",
         actionItem: "Completar certificación trimestral", actionOwner: "Luis Muñoz", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -231,8 +231,8 @@ const dashboardData = [
     {
         id: "24", system: "Inventarios de Certificados",
         owner: "Luis Muñoz / Teresa López", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - En seguimiento del proceso de actualizaciÃ³n del inventario de certificados de SAP Renovados o nuevos.",
-        prevWeek: "3/3 - En seguimiento del proceso de actualizaciÃ³n del inventario de certificados de SAP Renovados o nuevos.",
+        currentWeek: "10/3 - En seguimiento del proceso de actualización del inventario de certificados de SAP Renovados o nuevos.",
+        prevWeek: "3/3 - En seguimiento del proceso de actualización del inventario de certificados de SAP Renovados o nuevos.",
         actionItem: "Actualizar inventarios", actionOwner: "Luis Muñoz", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -240,8 +240,8 @@ const dashboardData = [
     {
         id: "25", system: "Indicadores - Métricas de sistemas",
         owner: "TQS - Carlos Castillo", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - En proceso entrega para los indicadores correspondientes enero y febrero. Se estÃ¡ trabajando en el nuevo template KOF para los siguientes indicadores. Se comparte el avance de carga de los indicadores en SharePoint SAP TecnologÃ­a. Se adjunta resumen de avance a la fecha:",
-        prevWeek: "3/3 - En proceso entrega para los indicadores correspondientes a diciembre y enero. Se estÃ¡ trabajando en el nuevo template KOF para los siguientes indicadores. Se comparte el avance de carga de los indicadores en SharePoint SAP TecnologÃ­a. Se adjunta resumen de avance a la fecha:",
+        currentWeek: "10/3 - En proceso entrega para los indicadores correspondientes enero y febrero. Se está trabajando en el nuevo template KOF para los siguientes indicadores. Se comparte el avance de carga de los indicadores en SharePoint SAP Tecnología. Se adjunta resumen de avance a la fecha:",
+        prevWeek: "3/3 - En proceso entrega para los indicadores correspondientes a diciembre y enero. Se está trabajando en el nuevo template KOF para los siguientes indicadores. Se comparte el avance de carga de los indicadores en SharePoint SAP Tecnología. Se adjunta resumen de avance a la fecha:",
         actionItem: "Entregar indicadores", actionOwner: "Carlos Castillo", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -249,8 +249,8 @@ const dashboardData = [
     {
         id: "26", system: "Clasificación cuentas privilegiadas",
         owner: "Luis Muñoz / Teresa López", status: "En Revisión", sla: "Critical",
-        currentWeek: "10/3 - Se compartiÃ³ la informaciÃ³n de los servidores para las cuentas privilegiadas PAM por SIA.",
-        prevWeek: "3/3 - Se compartiÃ³ la informaciÃ³n de los servidores para las cuentas privilegiadas PAM por SIA.",
+        currentWeek: "10/3 - Se compartió la información de los servidores para las cuentas privilegiadas PAM por SIA.",
+        prevWeek: "3/3 - Se compartió la información de los servidores para las cuentas privilegiadas PAM por SIA.",
         actionItem: "Seguimiento de ticket PAM (Teams).", actionOwner: "Teresa López", commitDate: "2026-02-28",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado según descripción. | Prioridad: P1 - Crítica",
         customComment: ""
@@ -258,8 +258,8 @@ const dashboardData = [
     {
         id: "27", system: "Toma por operaciones Nuevos Sistemas Azure",
         owner: "Antonio López / TQS", status: "Sin Incidentes", sla: "Minor",
-        currentWeek: "10/3 - Dynatrace = Sin incidentes por el momento. CPRQC = Sin incidentes por el momento. Cloud Connector = Continuamos con la recepciÃ³n de la documentaciÃ³n para el CLC Linux DEV. Mulesoft = Sin incidentes por el momento. BTP PaPM = Sin incidentes por el momento. Data Staging = Continuamos en proceso de entrega de la documentaciÃ³n a operaciones. Data Provisioning = Sin incidentes por el momento. Data Lake = Continuamos con la recepciÃ³n de la documentaciÃ³n. MissiÃ³n CrÃ­tica Azure = Sin incidentes por el momento. SCM & EWM = Sin incidentes por el momento. SOLMAN AZURE = Sin incidentes por el momento.",
-        prevWeek: "3/3 - Dynatrace = Sin incidentes por el momento. CPRQC = Sin incidentes por el momento. Cloud Connector = Continuamos con la recepciÃ³n de la documentaciÃ³n para el CLC Linux DEV. Mulesoft = Sin incidentes por el momento. BTP PaPM = Sin incidentes por el momento. Data Staging = Continuamos en proceso de entrega de la documentaciÃ³n a operaciones. Data Provisioning = Sin incidentes por el momento. Data Lake = Continuamos con la recepciÃ³n de la documentaciÃ³n. MissiÃ³n CrÃ­tica Azure = Sin incidentes por el momento. SCM & EWM = Sin incidentes por el momento. SOLMAN AZURE = Sin incidentes por el momento.",
+        currentWeek: "10/3 - Dynatrace = Sin incidentes por el momento. CPRQC = Sin incidentes por el momento. Cloud Connector = Continuamos con la recepción de la documentación para el CLC Linux DEV. Mulesoft = Sin incidentes por el momento. BTP PaPM = Sin incidentes por el momento. Data Staging = Continuamos en proceso de entrega de la documentación a operaciones. Data Provisioning = Sin incidentes por el momento. Data Lake = Continuamos con la recepción de la documentación. Missión Crítica Azure = Sin incidentes por el momento. SCM & EWM = Sin incidentes por el momento. SOLMAN AZURE = Sin incidentes por el momento.",
+        prevWeek: "3/3 - Dynatrace = Sin incidentes por el momento. CPRQC = Sin incidentes por el momento. Cloud Connector = Continuamos con la recepción de la documentación para el CLC Linux DEV. Mulesoft = Sin incidentes por el momento. BTP PaPM = Sin incidentes por el momento. Data Staging = Continuamos en proceso de entrega de la documentación a operaciones. Data Provisioning = Sin incidentes por el momento. Data Lake = Continuamos con la recepción de la documentación. Missión Crítica Azure = Sin incidentes por el momento. SCM & EWM = Sin incidentes por el momento. SOLMAN AZURE = Sin incidentes por el momento.",
         actionItem: "Revisar doc entregada e incorporar métricas.", actionOwner: "Antonio López", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado | Prioridad: Baja",
         customComment: ""
@@ -267,8 +267,8 @@ const dashboardData = [
     {
         id: "28", system: "Certificación de todos los usuarios de DB BOX",
         owner: "Luis Muñoz / Teresa López", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - Se generÃ³ la informaciÃ³n del entregable mensual.",
-        prevWeek: "3/3 - Se generÃ³ la informaciÃ³n del entregable mensual.",
+        currentWeek: "10/3 - Se generó la información del entregable mensual.",
+        prevWeek: "3/3 - Se generó la información del entregable mensual.",
         actionItem: "Revisar entregable", actionOwner: "Teresa López", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -276,7 +276,7 @@ const dashboardData = [
     {
         id: "29", system: "Performance / ABAP",
         owner: "Alejandro Alvarado / Team ABAP", status: "En Revisión", sla: "Minor",
-        currentWeek: "10/3 - Se emitiÃ³ la recomendaciÃ³n RLP-1350-04032 para la DB de RLP. Se emitiÃ³ la recomendaciÃ³n RAP-1870-04033 para la DB de RAP.",
+        currentWeek: "10/3 - Se emitió la recomendación RLP-1350-04032 para la DB de RLP. Se emitió la recomendación RAP-1870-04033 para la DB de RAP.",
         prevWeek: "3/3 - Se emitieron 4 recomendaciones para RAP.",
         actionItem: "Evaluar recomendaciones", actionOwner: "Alejandro Alvarado", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
@@ -312,8 +312,8 @@ const dashboardData = [
     {
         id: "33", system: "Validación de horarios sistemas en operación",
         owner: "Luis Muñoz / Teresa López", status: "En Revisión", sla: "Minor",
-        currentWeek: "10/3 - En seguimiento a la recomendaciÃ³n del mensaje a SAP 234995/2026 para MDG, se encapsulÃ³ la configuraciÃ³n del TimeZone del mandante 110 y se importÃ³ al mandante 000 del MDG. Se confirma que esta recomendaciÃ³n funcionÃ³ y se espera aplicar en el resto del landscape y replicar en SLT.",
-        prevWeek: "3/3 - Se generaron los mensajes 224537/2026 y 234995/2026 para SLT y MDG. En espera de retroalimentaciÃ³n.",
+        currentWeek: "10/3 - En seguimiento a la recomendación del mensaje a SAP 234995/2026 para MDG, se encapsuló la configuración del TimeZone del mandante 110 y se importó al mandante 000 del MDG. Se confirma que esta recomendación funcionó y se espera aplicar en el resto del landscape y replicar en SLT.",
+        prevWeek: "3/3 - Se generaron los mensajes 224537/2026 y 234995/2026 para SLT y MDG. En espera de retroalimentación.",
         actionItem: "Espera de respuesta SAP", actionOwner: "Luis Muñoz", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -321,8 +321,8 @@ const dashboardData = [
     {
         id: "34", system: "Validación de URLs WD OnPremise",
         owner: "Luis Muñoz / Teresa López", status: "En Revisión", sla: "Minor",
-        currentWeek: "10/3 - Pendiente presentaciÃ³n de las actividades para cambio de dominio kof.com.mx a kof.com.",
-        prevWeek: "3/3 - Generando presentaciÃ³n de las actividades para cambio de dominio kof.com.mx a kof.com.",
+        currentWeek: "10/3 - Pendiente presentación de las actividades para cambio de dominio kof.com.mx a kof.com.",
+        prevWeek: "3/3 - Generando presentación de las actividades para cambio de dominio kof.com.mx a kof.com.",
         actionItem: "Completar presentación de URLs", actionOwner: "Luis Muñoz", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -330,8 +330,8 @@ const dashboardData = [
     {
         id: "35", system: "Recalendarización del Job de transportes",
         owner: "Luis Muñoz / Teresa López", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - Se completÃ³ la configuraciÃ³n del usuario DDIC a tipo System en los ambientes OnPremise. Confirmar si es posible cerrar este punto.",
-        prevWeek: "3/3 - En seguimiento para la terminaciÃ³n de configuraciÃ³n en todos los sistemas OnPremise el usuario DDIC como SYSTEM.",
+        currentWeek: "10/3 - Se completó la configuración del usuario DDIC a tipo System en los ambientes OnPremise. Confirmar si es posible cerrar este punto.",
+        prevWeek: "3/3 - En seguimiento para la terminación de configuración en todos los sistemas OnPremise el usuario DDIC como SYSTEM.",
         actionItem: "Terminar configuración DDIC", actionOwner: "Luis Muñoz", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -339,8 +339,8 @@ const dashboardData = [
     {
         id: "36", system: "Desaprovisionamiento de Sentinel",
         owner: "Luis Muñoz / Teresa López", status: "En Revisión", sla: "Major",
-        currentWeek: "10/3 - Se espera confirmaciÃ³n de Estrella Melendez para evitar afectaciÃ³n con el desaprovisionamiento. Una vez confirmado, se procederÃ¡ desde Operaciones.",
-        prevWeek: "3/3 - Se espera confirmaciÃ³n de Estrella Melendez para evitar afectaciÃ³n con el desaprovisionamiento. Una vez confirmado, se procederÃ¡ desde Operaciones.",
+        currentWeek: "10/3 - Se espera confirmación de Estrella Melendez para evitar afectación con el desaprovisionamiento. Una vez confirmado, se procederá desde Operaciones.",
+        prevWeek: "3/3 - Se espera confirmación de Estrella Melendez para evitar afectación con el desaprovisionamiento. Una vez confirmado, se procederá desde Operaciones.",
         actionItem: "Confirmar con Estrella Melendez el impacto.", actionOwner: "Luis Muñoz", commitDate: "2026-03-03",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado | Prioridad: P3 - Media",
         customComment: ""
@@ -348,8 +348,8 @@ const dashboardData = [
     {
         id: "37", system: "Revisión Norma Corporativa Contraseñas",
         owner: "Teresa López / TQS", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - Se darÃ¡ seguimiento que los ambientes Productivos y No productivos, OnPremise y Azure para que cumplan con la Normativa de ContraseÃ±as KOF. Se remediÃ³ la desviaciÃ³n del ambiente BW Com BCP con el parÃ¡metro login/no_automatic_user_sap* a 1.",
-        prevWeek: "3/3 - Se darÃ¡ seguimiento que los ambientes Productivos OnPremise y Azure cumplan con la Normativa de ContraseÃ±as KOF. Se remediÃ³ la desviaciÃ³n del ambiente CAS LCP con el parÃ¡metro login/password_history_size a 15. Puntos adicionales",
+        currentWeek: "10/3 - Se dará seguimiento que los ambientes Productivos y No productivos, OnPremise y Azure para que cumplan con la Normativa de Contraseñas KOF. Se remedió la desviación del ambiente BW Com BCP con el parámetro login/no_automatic_user_sap* a 1.",
+        prevWeek: "3/3 - Se dará seguimiento que los ambientes Productivos OnPremise y Azure cumplan con la Normativa de Contraseñas KOF. Se remedió la desviación del ambiente CAS LCP con el parámetro login/password_history_size a 15. Puntos adicionales",
         actionItem: "Alineamiento a la norma KOF", actionOwner: "Teresa López", commitDate: "-",
         referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
         customComment: ""
@@ -894,6 +894,7 @@ window.generatePDF = () => {
         if (failBtn) failBtn.innerHTML = 'Error en Exportación';
     }
 };
+
 
 
 
