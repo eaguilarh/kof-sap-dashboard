@@ -822,24 +822,25 @@ window.generatePDF = () => {
                     const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
                     tdItems += `
                             <td style="width: ${tdWidth}%; padding: 0 4px; text-align: center; vertical-align: top;">
-                                <img src="${imgSrc}" style="width: 100%; max-height: 650px; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; background-color: white;">
+                                <img src="${imgSrc}" style="width: 100%; max-height: 500px; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; background-color: white;">
                             </td>
                         `;
                 }
 
-                // Unified Table layout for item 25 to lock text and images together side-by-side but allow page breaks between text and images
+                // Layout for item 25: Text first, then a forced page break before the side-by-side images
                 bodyContentHTML += `
                         <div style="margin-bottom: ${boxMarginBottom}; width: 100%;">
-                            <table style="width: 100%; border-collapse: collapse;">
-                                <tr>
-                                    <td colspan="2" style="padding-bottom: 10px;">
-                                        ${textContentHtml}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    ${tdItems}
-                                </tr>
-                            </table>
+                            <div style="margin-bottom: 10px;">
+                                ${textContentHtml}
+                            </div>
+                            <!-- page-break-before forces images to start fresh on the next PDF page so they are not cut off -->
+                            <div style="page-break-before: always; page-break-inside: avoid; width: 100%; padding-top: 10px;">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <tr>
+                                        ${tdItems}
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     `;
             } else {
