@@ -153,9 +153,13 @@
     </div>
 
     <!-- Lightbox Element -->
-    <div class="lightbox" id="image-lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-        <img id="lightbox-img" src="" alt="Reference Image">
+    <div class="lightbox" id="image-lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+        <button class="lightbox-nav lightbox-prev" style="display:none;"
+            onclick="changeLightboxImage(-1, event)">&#10094;</button>
+        <img id="lightbox-img" src="" alt="Reference Image" onclick="event.stopPropagation()">
+        <button class="lightbox-nav lightbox-next" style="display:none;"
+            onclick="changeLightboxImage(1, event)">&#10095;</button>
     </div>
 
     <!-- Core Script -->

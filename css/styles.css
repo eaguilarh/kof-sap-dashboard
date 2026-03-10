@@ -652,11 +652,11 @@ tbody tr.main-row td {
 }
 
 .lightbox img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 95vw;
+    max-height: 95vh;
     object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     transform: scale(0.95);
     transition: transform 0.3s ease;
     background: #ffffff;
@@ -675,6 +675,39 @@ tbody tr.main-row td {
     cursor: pointer;
     border: none;
     background: transparent;
+    z-index: 10001;
+    transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+    color: #e2e8f0;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 10001;
+    transition: background 0.2s;
+}
+
+.lightbox-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
 }
 
 .info-grid {

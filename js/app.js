@@ -507,7 +507,7 @@ function renderDashboard(dataArray) {
             for (let i = 1; i <= imageCounts[row.id]; i++) {
                 const timestamp = new Date().getTime(); // Cache busting
                 const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${row.id}_${i}`]) ? window.DashboardImages[`ref_${row.id}_${i}`] : `img/ref_${row.id}_${i}.png?v=${timestamp}`;
-                galleryHTML += `<img src="${imgSrc}" class="ref-thumbnail" onclick="openLightbox(this.src)" title="Clic para ampliar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                galleryHTML += `<img src="${imgSrc}" class="ref-thumbnail" onclick="openLightboxGallery('${row.id}', ${i - 1})" title="Clic para ampliar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                 <span class="fallback-text" style="display:none; color: var(--text-muted); font-size: 11px;">(Falta img/ref_${row.id}_${i}.png)</span>`;
             }
             galleryHTML += '</div>';
@@ -642,12 +642,61 @@ window.toggleDetails = (id, btnElement) => {
     detailRow.classList.toggle('open');
 };
 
-// Lightbox logic
-window.openLightbox = (src) => {
-    document.getElementById('lightbox-img').src = src;
+// Lightbox logic & Gallery state
+window.currentGalleryImages = [];
+window.currentGalleryIndex = 0;
+
+window.openLightboxGallery = (itemId, index) => {
+    window.currentGalleryImages = [];
+    for (let i = 1; i <= imageCounts[itemId]; i++) {
+        const timestamp = new Date().getTime();
+        const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${itemId}_${i}`])
+            ? window.DashboardImages[`ref_${itemId}_${i}`]
+            : `img/ref_${itemId}_${i}.png?v=${timestamp}`;
+        window.currentGalleryImages.push(imgSrc);
+    }
+    window.currentGalleryIndex = index || 0;
+    updateLightboxView();
     document.getElementById('image-lightbox').classList.add('active');
 };
-window.closeLightbox = () => {
+
+window.openLightbox = (src) => {
+    window.currentGalleryImages = [src];
+    window.currentGalleryIndex = 0;
+    updateLightboxView();
+    document.getElementById('image-lightbox').classList.add('active');
+};
+
+window.updateLightboxView = () => {
+    if (window.currentGalleryImages.length === 0) return;
+    document.getElementById('lightbox-img').src = window.currentGalleryImages[window.currentGalleryIndex];
+
+    // Toggle navigation arrows if there's more than 1 image
+    const showNav = window.currentGalleryImages.length > 1;
+    document.querySelector('.lightbox-prev').style.display = showNav ? 'block' : 'none';
+    document.querySelector('.lightbox-next').style.display = showNav ? 'block' : 'none';
+};
+
+window.changeLightboxImage = (direction, event) => {
+    if (event) event.stopPropagation();
+    if (window.currentGalleryImages.length === 0) return;
+
+    window.currentGalleryIndex += direction;
+    // Loop around logic
+    if (window.currentGalleryIndex >= window.currentGalleryImages.length) {
+        window.currentGalleryIndex = 0;
+    }
+    if (window.currentGalleryIndex < 0) {
+        window.currentGalleryIndex = window.currentGalleryImages.length - 1;
+    }
+    updateLightboxView();
+};
+
+window.closeLightbox = (event) => {
+    if (event && event.target.id !== 'image-lightbox' && !event.target.classList.contains('lightbox-close')) {
+        // Prevents closing when clicking on inner elements unless it's the exact background or X
+        return;
+    }
     document.getElementById('image-lightbox').classList.remove('active');
 };
 
@@ -739,11 +788,11 @@ window.generatePDF = () => {
                             <div style="display: flex; gap: 15px;">
                                 <div style="flex: 1; min-width: 0;">
                                     <strong style="color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 2px; display: inline-block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">Semana Previa</strong>
-                                    <div style="color: #334155; line-height: 1.3; word-wrap: break-word;">${item.prevWeek}</div>
+                                    <div style="color: #334155; line-height: 1.6; font-size: 11.5px; white-space: pre-wrap; word-wrap: break-word;">${item.prevWeek}</div>
                                 </div>
                                 <div style="flex: 1; min-width: 0;">
                                     <strong style="color: #0f172a; border-bottom: 2px solid #3b82f6; padding-bottom: 2px; display: inline-block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">Semana Actual</strong>
-                                    <div style="color: #334155; line-height: 1.3; font-weight: 500; word-wrap: break-word;">${item.currentWeek}</div>
+                                    <div style="color: #334155; line-height: 1.6; font-size: 11.5px; font-weight: 500; white-space: pre-wrap; word-wrap: break-word;">${item.currentWeek}</div>
                                 </div>
                             </div>
                             ${commentHtml}
