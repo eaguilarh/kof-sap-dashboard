@@ -15,7 +15,33 @@ window.toggleDarkMode = () => {
 
 // Helper to format Spanish dates dynamically (Miércoles a Martes)
 const getDynamicPeriod = () => {
-    return 'Periodo: 4 al 10 de Mar 2026';
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // 0(Sun) - 6(Sat)
+
+    // We want the period to be Wed (3) to Tue (2)
+    // If today is Wed, Thu, Fri, Sat, Sun, Mon, Tue -> what to do?
+    // Let's define the "current period start" as the most recent Wednesday
+    const daysSinceWednesday = (dayOfWeek >= 3) ? (dayOfWeek - 3) : (dayOfWeek + 4);
+
+    const startDate = new Date(today);
+    startDate.setDate(today.getDate() - daysSinceWednesday);
+
+    const endDate = new Date(startDate);
+    endDate.setDate(startDate.getDate() + 6); // Tuesday is 6 days after Wednesday
+
+    const months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
+    const startDay = startDate.getDate();
+    const endDay = endDate.getDate();
+    const startMonth = months[startDate.getMonth()].toLowerCase();
+    const endMonth = months[endDate.getMonth()].toLowerCase();
+    const year = endDate.getFullYear();
+
+    if (startMonth === endMonth) {
+        return `Periodo: ${startDay} al ${endDay} de ${endMonth.charAt(0).toUpperCase() + endMonth.slice(1)} ${year}`;
+    } else {
+        return `Periodo: ${startDay} ${startMonth} al ${endDay} ${endMonth} ${year}`;
+    }
 };
 
 const dynamicPeriodText = getDynamicPeriod();
