@@ -939,16 +939,25 @@ window.generatePDF = () => {
 
         // Give images a small tick to load safely in memory before painting
         setTimeout(() => {
-            // Generate dynamic filename with timestamp
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timestamp = `${year}${month}${day}_${hours}${minutes}${seconds}`;
-            const dynamicFilename = `KOF_Minuta_${timestamp}.pdf`;
+            // Generate dynamic filename with Tuesday's date
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            const daysSinceWednesday = (dayOfWeek >= 3) ? (dayOfWeek - 3) : (dayOfWeek + 4);
+            const startDate = new Date(today);
+            startDate.setDate(today.getDate() - daysSinceWednesday);
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + 6); // Weekly Tuesday
+
+            const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            const endDay = endDate.getDate();
+            const endMonth = months[endDate.getMonth()];
+            const year = endDate.getFullYear();
+
+            // Generate timestamp for versioning (HHMM) to act as vX if downloaded multiple times
+            const hours = String(today.getHours()).padStart(2, '0');
+            const minutes = String(today.getMinutes()).padStart(2, '0');
+
+            const dynamicFilename = `Minuta Reunion Semanal Operaciones KOF ${endDay} de ${endMonth} de ${year} v1.pdf`;
 
             // Invoke Html2Pdf Options
             const opt = {
