@@ -652,14 +652,17 @@ tbody tr.main-row td {
 }
 
 .lightbox img {
-    max-width: 95vw;
-    max-height: 95vh;
+    width: 95vw;
+    height: 95vh;
     object-fit: contain;
     border-radius: 4px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     transform: scale(0.95);
     transition: transform 0.3s ease;
     background: #ffffff;
+    /* Rendering optimizations to keep text sharp when upscaled */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .lightbox.active img {
