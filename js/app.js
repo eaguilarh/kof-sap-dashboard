@@ -384,8 +384,13 @@ const dashboardData = [
 
 // Reference images dictionary (ID: Number of images)
 const imageCounts = {
-    // Agrega aquí los IDs y cantidad de imágenes si hay nuevas para esta semana
-    // Ejemplo: "12": 2
+    "1": 2,
+    "18": 8,
+    "22": 2,
+    "25": 2,
+    "30": 5,
+    "31": 2,
+    "35": 1
 };
 
 // Attendees for Minuta
