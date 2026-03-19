@@ -702,9 +702,6 @@ tbody tr.main-row td {
     transform: scale(0.95);
     transition: transform 0.3s ease;
     background: #ffffff;
-    /* Rendering optimizations to keep text sharp when upscaled */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
 }
 
 .lightbox.active img {
