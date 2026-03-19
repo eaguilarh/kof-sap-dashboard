@@ -13,7 +13,10 @@ console.log("Receiving Payload:", payload);
 
 // Read dashboard data
 const dataPath = path.join(__dirname, '../dashboard_data.json');
-const rawData = fs.readFileSync(dataPath, 'utf8');
+let rawData = fs.readFileSync(dataPath, 'utf8');
+if (rawData.charCodeAt(0) === 0xFEFF) {
+    rawData = rawData.slice(1);
+}
 const dashboardData = JSON.parse(rawData);
 
 // The payload id string from Forms might be "1. Archiving" or just "1"
