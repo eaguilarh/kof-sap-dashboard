@@ -29,7 +29,8 @@ if (!matchId) {
 const pointId = matchId[1];
 
 // Find the corresponding point in the data array
-const point = dashboardData.find(p => p.id == pointId || p.id === parseInt(pointId));
+const pointsArray = Array.isArray(dashboardData) ? dashboardData : (dashboardData.value || []);
+const point = pointsArray.find(p => p.id == pointId || p.id === parseInt(pointId));
 if (!point) {
     console.error("Point ID not found in dashboard_data.json:", pointId);
     process.exit(1);
