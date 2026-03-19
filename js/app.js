@@ -1,4 +1,4 @@
-﻿// Dark Mode Toggle
+// Dark Mode Toggle
 window.toggleDarkMode = () => {
     document.body.classList.toggle('dark-mode');
     const btn = document.getElementById('dark-mode-toggle');
@@ -354,16 +354,7 @@ const dashboardData = [
         customComment: ""
     },
     {
-        id: "35", system: "Ajuste de usuarios DDIC a tipo System",
-        owner: "Luis Muñoz / Teresa López", status: "En Proceso", sla: "Minor",
-        currentWeek: "10/3 - Se completó la configuración del usuario DDIC a tipo System en los ambientes OnPremise. Confirmar si es posible cerrar este punto.",
-        prevWeek: "3/3 - En seguimiento para la terminación de configuración en todos los sistemas OnPremise el usuario DDIC como SYSTEM.",
-        actionItem: "Terminar configuración DDIC", actionOwner: "Luis Muñoz", commitDate: "-",
-        referenceInfo: "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
-        customComment: ""
-    },
-    {
-        id: "36", system: "Desaprovisionamiento de Sentinel",
+        id: "35", system: "Desaprovisionamiento de Sentinel",
         owner: "Luis Muñoz / Teresa López", status: "En Revisión", sla: "Major",
         currentWeek: "10/3 - Se espera confirmación de Estrella Melendez para evitar afectación con el desaprovisionamiento. Una vez confirmado, se procederá desde Operaciones.",
         prevWeek: "3/3 - Se espera confirmación de Estrella Melendez para evitar afectación con el desaprovisionamiento. Una vez confirmado, se procederá desde Operaciones.",
@@ -372,7 +363,7 @@ const dashboardData = [
         customComment: ""
     },
     {
-        id: "37", system: "Revisión Norma Corporativa Contraseñas",
+        id: "36", system: "Revisión Norma Corporativa Contraseñas",
         owner: "Teresa López / TQS", status: "En Proceso", sla: "Minor",
         currentWeek: "10/3 - Se dará seguimiento que los ambientes Productivos y No productivos, OnPremise y Azure para que cumplan con la Normativa de Contraseñas KOF. Se remedió la desviación del ambiente BW Com BCP con el parámetro login/no_automatic_user_sap* a 1.",
         prevWeek: "3/3 - Se dará seguimiento que los ambientes Productivos OnPremise y Azure cumplan con la Normativa de Contraseñas KOF. Se remedió la desviación del ambiente CAS LCP con el parámetro login/password_history_size a 15. Puntos adicionales",
@@ -389,8 +380,7 @@ const imageCounts = {
     "22": 2,
     "25": 2,
     "30": 5,
-    "31": 2,
-    "35": 1
+    "31": 2
 };
 
 // Attendees for Minuta
