@@ -4,15 +4,16 @@
             "id": "1",
             "system": "Archiving",
             "owner": "Juan Miguel Boza / Jordan Cocoletzi",
-            "status": "Con Incidentes",
+            "status": "En Revisión",
             "sla": "Minor",
-            "currentWeek": "19/3 - Estatus de prueba",
-            "prevWeek": "24/02 - SAP ECC'S - Carga de Datos en tabla ZARIX (propuesta de mantener un mes en línea).",
-            "actionItem": "Error conocido",
+            "currentWeek": "20/3 - Mensaje de prueba",
+            "prevWeek": "19/3 - Estatus de prueba",
+            "actionItem": "Otra prueba",
             "actionOwner": "Por definir",
-            "commitDate": "2026-03-24",
+            "commitDate": "2026-03-30",
             "referenceInfo": "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
-            "customComment": ""
+            "customComment": "",
+            "imageCount": 2
         },
         {
             "id": "2",
