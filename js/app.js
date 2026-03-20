@@ -499,7 +499,7 @@ window.generatePDF = () => {
                     const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
                     tdItems += `
                             <td style="width: ${tdWidth}%; padding: 0 4px; text-align: center; vertical-align: top;">
-                                <img src="${imgSrc}" style="width: 100%; max-height: 500px; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; background-color: white;">
+                                <img class="pdf-no-break" src="${imgSrc}" style="page-break-inside: avoid; width: 100%; max-height: 500px; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; background-color: white;">
                             </td>
                         `;
                 }
@@ -510,9 +510,9 @@ window.generatePDF = () => {
                             <div style="margin-bottom: 10px;">
                                 ${textContentHtml}
                             </div>
-                            <!-- page-break-before forces images to start fresh on the next PDF page so they are not cut off -->
-                            <div class="pdf-no-break" style="page-break-before: always; page-break-inside: avoid; width: 100%; padding-top: 10px;">
-                                <table style="width: 100%; border-collapse: collapse;">
+                            <!-- Removed page-break-before to fix massive whitespace, relying on table's pdf-no-break -->
+                            <div style="width: 100%; padding-top: 10px;">
+                                <table class="pdf-no-break" style="page-break-inside: avoid; width: 100%; border-collapse: collapse;">
                                     <tr>
                                         ${tdItems}
                                     </tr>
@@ -527,8 +527,8 @@ window.generatePDF = () => {
                         const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
 
                         stackedImages += `
-                                <div class="pdf-no-break" style="page-break-inside: avoid; break-inside: avoid; display: block; margin-bottom: 15px; padding: 5px 10px;">
-                                    <img src="${imgSrc}" style="max-width: 100%; width: auto; max-height: 600px; height: auto; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; display: block; margin: 0 auto; background-color: white;">
+                                <div style="display: block; margin-bottom: 15px; padding: 5px 10px;">
+                                    <img class="pdf-no-break" src="${imgSrc}" style="page-break-inside: avoid; max-width: 100%; width: auto; max-height: 600px; height: auto; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; display: block; margin: 0 auto; background-color: white;">
                                 </div>
                             `;
                     }
@@ -643,7 +643,7 @@ window.generatePDF = () => {
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, useCORS: true, allowTaint: true, letterRendering: true, logging: false },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-                pagebreak: { mode: ['css', 'legacy'], avoid: ['.pdf-no-break'] }
+                pagebreak: { mode: ['css', 'legacy'], avoid: ['.pdf-no-break', 'img', 'table'] }
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
