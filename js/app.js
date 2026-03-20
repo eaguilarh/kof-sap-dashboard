@@ -462,11 +462,15 @@ window.generatePDF = () => {
 
             let commentHtml = '';
             if (item.customComment && item.customComment !== '') {
-                commentHtml = `<div class="pdf-no-break" style="margin-top:10px; background-color:#fef3c7; color:#b45309; padding:8px 12px; font-weight:600; border-radius:4px; font-size:11px; border-left: 3px solid #f59e0b; page-break-inside: avoid;">Comentario a la minuta: ${item.customComment}</div>`;
+                commentHtml = `
+                    <div class="pdf-no-break" style="page-break-inside: avoid; padding-top: 6px; padding-bottom: 6px; margin-top: 4px;">
+                        <div style="background-color:#fef3c7; color:#b45309; padding:8px 12px; font-weight:600; border-radius:4px; font-size:11px; border-left: 3px solid #f59e0b;">Comentario a la minuta: ${item.customComment}</div>
+                    </div>`;
             }
 
             let textContentHtml = `
-                    <div class="pdf-no-break" style="page-break-inside: avoid; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; display: block; box-shadow: 0 1px 2px rgba(0,0,0,0.05); background-color: #ffffff;">
+                    <div class="pdf-no-break" style="page-break-inside: avoid; padding-top: 6px; padding-bottom: 6px; width: 100%;">
+                        <div style="border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; display: block; box-shadow: 0 1px 2px rgba(0,0,0,0.05); background-color: #ffffff;">
                         <div style="background-color: #f8fafc; padding: 6px 15px; border-bottom: 1px solid #cbd5e1;">
                             <div style="float: right; font-size: 11px;">${getStatusBadge(item.status)}</div>
                             <h3 style="margin: 0; font-size: 13px; color: #0f172a; font-weight: 700;">#${item.id} - ${item.system}</h3>
@@ -489,6 +493,7 @@ window.generatePDF = () => {
                             ${commentHtml}
                         </div>
                     </div>
+                </div>
                 `;
 
             if (isItem25) {
@@ -499,7 +504,7 @@ window.generatePDF = () => {
                     const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
                     tdItems += `
                             <td style="width: ${tdWidth}%; padding: 0 4px; text-align: center; vertical-align: top;">
-                                <img class="pdf-no-break" src="${imgSrc}" style="page-break-inside: avoid; width: 100%; max-height: 500px; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; background-color: white;">
+                                <img src="${imgSrc}" style="width: 100%; max-height: 500px; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; background-color: white;">
                             </td>
                         `;
                 }
@@ -510,9 +515,9 @@ window.generatePDF = () => {
                             <div style="margin-bottom: 10px;">
                                 ${textContentHtml}
                             </div>
-                            <!-- Removed page-break-before to fix massive whitespace, relying on table's pdf-no-break -->
-                            <div style="width: 100%; padding-top: 10px;">
-                                <table class="pdf-no-break" style="page-break-inside: avoid; width: 100%; border-collapse: collapse;">
+                            <!-- Protective padding wrapper to ensure borders aren't sliced by the PDF break -->
+                            <div class="pdf-no-break" style="page-break-inside: avoid; width: 100%; padding-top: 8px; padding-bottom: 8px;">
+                                <table style="width: 100%; border-collapse: collapse;">
                                     <tr>
                                         ${tdItems}
                                     </tr>
@@ -527,8 +532,10 @@ window.generatePDF = () => {
                         const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
 
                         stackedImages += `
-                                <div style="display: block; margin-bottom: 15px; padding: 5px 10px;">
-                                    <img class="pdf-no-break" src="${imgSrc}" style="page-break-inside: avoid; max-width: 100%; width: auto; max-height: 600px; height: auto; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; display: block; margin: 0 auto; background-color: white;">
+                                <div class="pdf-no-break" style="page-break-inside: avoid; display: block; margin-bottom: 15px; padding-top: 6px; padding-bottom: 6px;">
+                                    <div style="padding: 0 10px;">
+                                        <img src="${imgSrc}" style="max-width: 100%; width: auto; max-height: 600px; height: auto; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; display: block; margin: 0 auto; background-color: white;">
+                                    </div>
                                 </div>
                             `;
                     }
@@ -563,12 +570,14 @@ window.generatePDF = () => {
             });
 
             bodyContentHTML += `
-                <div class="pdf-no-break" style="page-break-inside: avoid; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; margin-top: 10px; margin-bottom: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="background-color: #f1f5f9; padding: 8px 15px; border-bottom: 1px solid #cbd5e1; display: flex; align-items: center;">
+                <div class="pdf-no-break" style="page-break-inside: avoid; padding-top: 8px; padding-bottom: 8px; margin-top: 2px;">
+                    <div style="border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                        <div style="background-color: #f1f5f9; padding: 8px 15px; border-bottom: 1px solid #cbd5e1; display: flex; align-items: center;">
                         <h3 style="margin: 0; font-size: 13px; color: #0f172a; font-weight: 700;">Puntos Adicionales / Acuerdos</h3>
                     </div>
                     <div style="padding: 15px; font-size: 11px;">
                         ${pointsHTML}
+                    </div>
                     </div>
                 </div>
             `;
