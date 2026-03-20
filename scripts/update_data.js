@@ -56,6 +56,7 @@ if (payload.status) point.status = payload.status;
 if (payload.actionItem) point.actionItem = payload.actionItem;
 if (payload.actionOwner) point.actionOwner = payload.actionOwner;
 if (payload.commitDate) point.commitDate = payload.commitDate;
+if (payload.imageCount !== undefined) point.imageCount = parseInt(payload.imageCount);
 
 // Save back to file cleanly
 fs.writeFileSync(dataPath, JSON.stringify(dashboardData, null, 4), 'utf8');

@@ -177,9 +177,10 @@ function renderDashboard(dataArray) {
     sortedData.forEach((row) => {
         // Build image gallery code if applicable
         let imgRefHTML = '';
-        if (imageCounts[row.id] && imageCounts[row.id] > 0) {
+        let rowImageCount = row.imageCount !== undefined ? parseInt(row.imageCount) : (imageCounts[row.id] || 0);
+        if (rowImageCount > 0) {
             let galleryHTML = '<div class="ref-gallery">';
-            for (let i = 1; i <= imageCounts[row.id]; i++) {
+            for (let i = 1; i <= rowImageCount; i++) {
                 const timestamp = new Date().getTime(); // Cache busting
                 const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${row.id}_${i}`]) ? window.DashboardImages[`ref_${row.id}_${i}`] : `img/ref_${row.id}_${i}.png?v=${timestamp}`;
                 galleryHTML += `<img src="${imgSrc}" class="ref-thumbnail" onclick="openLightboxGallery('${row.id}', ${i - 1})" title="Clic para ampliar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -454,7 +455,8 @@ window.generatePDF = () => {
         itemsToExport.forEach(item => {
             let imgHtml = '';
             let stackedImages = '';
-            let hasImages = (imageCounts[item.id] && imageCounts[item.id] > 0);
+            let itemImageCount = item.imageCount !== undefined ? parseInt(item.imageCount) : (imageCounts[item.id] || 0);
+            let hasImages = (itemImageCount > 0);
             const isItem25 = (item.id === "25" || item.id === 25);
             const boxMarginBottom = isItem25 ? '15px' : '5px';
 
@@ -491,8 +493,8 @@ window.generatePDF = () => {
 
             if (isItem25) {
                 let tdItems = '';
-                const tdWidth = 100 / imageCounts[item.id];
-                for (let i = 1; i <= imageCounts[item.id]; i++) {
+                const tdWidth = 100 / itemImageCount;
+                for (let i = 1; i <= itemImageCount; i++) {
                     const timestamp = new Date().getTime(); // Cache busting
                     const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
                     tdItems += `
@@ -520,7 +522,7 @@ window.generatePDF = () => {
                     `;
             } else {
                 if (hasImages) {
-                    for (let i = 1; i <= imageCounts[item.id]; i++) {
+                    for (let i = 1; i <= itemImageCount; i++) {
                         const timestamp = new Date().getTime(); // Cache busting
                         const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
 
