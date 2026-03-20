@@ -527,7 +527,7 @@ window.generatePDF = () => {
                         const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
 
                         stackedImages += `
-                                <div class="pdf-no-break" style="page-break-inside: avoid; break-inside: avoid; display: block; margin-bottom: 12px; padding: 0 10px;">
+                                <div class="pdf-no-break" style="page-break-inside: avoid; break-inside: avoid; display: block; margin-bottom: 15px; padding: 5px 10px;">
                                     <img src="${imgSrc}" style="max-width: 100%; width: auto; max-height: 600px; height: auto; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; display: block; margin: 0 auto; background-color: white;">
                                 </div>
                             `;
@@ -643,7 +643,7 @@ window.generatePDF = () => {
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, useCORS: true, allowTaint: true, letterRendering: true, logging: false },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                pagebreak: { mode: ['css', 'legacy'], avoid: ['.pdf-no-break'] }
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
