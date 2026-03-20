@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install Dependencies
+        run: npm install
+
       - name: Run Update Script
         env:
           PAYLOAD: ${{ toJson(github.event.client_payload) }}
@@ -42,3 +45,9 @@ jobs:
             git push
             echo "Changes pushed successfully! Vercel will now deploy."
           fi
+
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "La automatización falló. Configura aquí tu webhook de Teams o Slack."
+          # curl -H 'Content-Type: application/json' -d '{"text": "Alerta: Error en la automatización del KOF SAP Dashboard"}' <WEBHOOK_URL>

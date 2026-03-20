@@ -462,11 +462,11 @@ window.generatePDF = () => {
 
             let commentHtml = '';
             if (item.customComment && item.customComment !== '') {
-                commentHtml = `<div style="margin-top:10px; background-color:#fef3c7; color:#b45309; padding:8px 12px; font-weight:600; border-radius:4px; font-size:11px; border-left: 3px solid #f59e0b; page-break-inside: avoid;">Comentario a la minuta: ${item.customComment}</div>`;
+                commentHtml = `<div class="pdf-no-break" style="margin-top:10px; background-color:#fef3c7; color:#b45309; padding:8px 12px; font-weight:600; border-radius:4px; font-size:11px; border-left: 3px solid #f59e0b; page-break-inside: avoid;">Comentario a la minuta: ${item.customComment}</div>`;
             }
 
             let textContentHtml = `
-                    <div style="page-break-inside: avoid; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; display: block; box-shadow: 0 1px 2px rgba(0,0,0,0.05); background-color: #ffffff;">
+                    <div class="pdf-no-break" style="page-break-inside: avoid; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; display: block; box-shadow: 0 1px 2px rgba(0,0,0,0.05); background-color: #ffffff;">
                         <div style="background-color: #f8fafc; padding: 6px 15px; border-bottom: 1px solid #cbd5e1;">
                             <div style="float: right; font-size: 11px;">${getStatusBadge(item.status)}</div>
                             <h3 style="margin: 0; font-size: 13px; color: #0f172a; font-weight: 700;">#${item.id} - ${item.system}</h3>
@@ -511,7 +511,7 @@ window.generatePDF = () => {
                                 ${textContentHtml}
                             </div>
                             <!-- page-break-before forces images to start fresh on the next PDF page so they are not cut off -->
-                            <div style="page-break-before: always; page-break-inside: avoid; width: 100%; padding-top: 10px;">
+                            <div class="pdf-no-break" style="page-break-before: always; page-break-inside: avoid; width: 100%; padding-top: 10px;">
                                 <table style="width: 100%; border-collapse: collapse;">
                                     <tr>
                                         ${tdItems}
@@ -527,7 +527,7 @@ window.generatePDF = () => {
                         const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${item.id}_${i}`]) ? window.DashboardImages[`ref_${item.id}_${i}`] : `img/ref_${item.id}_${i}.png?v=${timestamp}`;
 
                         stackedImages += `
-                                <div style="page-break-inside: avoid; break-inside: avoid; display: block; margin-bottom: 12px; padding: 0 10px;">
+                                <div class="pdf-no-break" style="page-break-inside: avoid; break-inside: avoid; display: block; margin-bottom: 12px; padding: 0 10px;">
                                     <img src="${imgSrc}" style="max-width: 100%; width: auto; max-height: 600px; height: auto; object-fit: contain; border: 1px solid #cbd5e1; border-radius: 4px; display: block; margin: 0 auto; background-color: white;">
                                 </div>
                             `;
@@ -563,7 +563,7 @@ window.generatePDF = () => {
             });
 
             bodyContentHTML += `
-                <div style="page-break-inside: avoid; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; margin-top: 10px; margin-bottom: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                <div class="pdf-no-break" style="page-break-inside: avoid; border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; margin-top: 10px; margin-bottom: 5px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
                     <div style="background-color: #f1f5f9; padding: 8px 15px; border-bottom: 1px solid #cbd5e1; display: flex; align-items: center;">
                         <h3 style="margin: 0; font-size: 13px; color: #0f172a; font-weight: 700;">Puntos Adicionales / Acuerdos</h3>
                     </div>
@@ -638,12 +638,12 @@ window.generatePDF = () => {
 
             // Invoke Html2Pdf Options
             const opt = {
-                margin: 0.3, // Reduced PDF page margin
+                margin: [0.45, 0.3, 0.45, 0.3], // Margin top & bottom at 0.45in to prevent cutoff
                 filename: dynamicFilename,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, useCORS: true, allowTaint: true, letterRendering: true, logging: false },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-                pagebreak: { mode: ['css', 'legacy'] }
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
