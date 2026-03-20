@@ -4,16 +4,16 @@
             "id": "1",
             "system": "Archiving",
             "owner": "Juan Miguel Boza / Jordan Cocoletzi",
-            "status": "Con Incidentes",
+            "status": "En Revisión",
             "sla": "Minor",
-            "currentWeek": "20/3 - Test",
-            "prevWeek": "20/3 - Esta es una actualización a la semana anterior",
-            "actionItem": "sesión de pruebas",
-            "actionOwner": "TBD x DXC",
-            "commitDate": "2026-04-01",
+            "currentWeek": "20/3 - * orden 1\n* orden 2\n* orden 3",
+            "prevWeek": "20/3 - Test",
+            "actionItem": "* pendiente 1\n* pendiente 2\n* pendiente 3.1416",
+            "actionOwner": "DXC",
+            "commitDate": "2026-03-27",
             "referenceInfo": "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
             "customComment": "",
-            "imageCount": 2
+            "imageCount": 1
         },
         {
             "id": "2",
