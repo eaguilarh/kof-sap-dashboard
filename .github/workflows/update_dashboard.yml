@@ -22,7 +22,9 @@ jobs:
       - name: Run Update Script
         env:
           PAYLOAD: ${{ toJson(github.event.client_payload) }}
-        run: node scripts/update_data.js
+        run: |
+          node scripts/update_data.js
+          node encode.js
 
       - name: Commit and Push Changes
         run: |
@@ -30,6 +32,7 @@ jobs:
           git config --global user.email "automation@dashboard.local"
           git add dashboard_data.json
           git add img/
+          git add js/image-data.js
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then
