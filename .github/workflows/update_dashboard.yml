@@ -29,6 +29,7 @@ jobs:
           git config --global user.name "Dashboard Automation"
           git config --global user.email "automation@dashboard.local"
           git add dashboard_data.json
+          git add img/
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then

@@ -56,7 +56,18 @@ if (payload.status) point.status = payload.status;
 if (payload.actionItem) point.actionItem = payload.actionItem;
 if (payload.actionOwner) point.actionOwner = payload.actionOwner;
 if (payload.commitDate) point.commitDate = payload.commitDate;
-if (payload.imageCount !== undefined) point.imageCount = parseInt(payload.imageCount);
+if (payload.imageCount !== undefined) {
+    point.imageCount = parseInt(payload.imageCount);
+    const imgFolder = path.join(__dirname, '../img');
+    for (let i = 1; i <= point.imageCount; i++) {
+        const rawName = path.join(imgFolder, `ref_${payload.id_string}_${i}.png`);
+        const cleanName = path.join(imgFolder, `ref_${pointId}_${i}.png`);
+        if (fs.existsSync(rawName)) {
+            fs.renameSync(rawName, cleanName);
+            console.log(`Renamed raw image to ref_${pointId}_${i}.png`);
+        }
+    }
+}
 
 // Save back to file cleanly
 fs.writeFileSync(dataPath, JSON.stringify(dashboardData, null, 4), 'utf8');
