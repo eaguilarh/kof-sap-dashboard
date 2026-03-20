@@ -661,7 +661,7 @@ window.generatePDF = () => {
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, useCORS: true, allowTaint: true, letterRendering: true, logging: false },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-                pagebreak: { mode: ['css', 'legacy'], avoid: ['.pdf-no-break', 'img', 'table'] }
+                pagebreak: { mode: ['css', 'legacy'], avoid: ['.pdf-no-break'] }
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
