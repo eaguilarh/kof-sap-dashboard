@@ -444,7 +444,10 @@ window.generatePDF = () => {
         const col2 = attendeesList.slice(half).map(a => `<li style="margin-bottom: 2px;">${a}</li>`).join('');
 
         let bodyContentHTML = '<div style="display: flex; flex-direction: column; gap: 12px; font-family: \'Inter\', sans-serif;">';
-        bodyContentHTML += '<h4 style="border-bottom: 2px solid #10b981; padding-bottom: 4px; margin-top: 0; margin-bottom: 5px;">Estatus de Puntos (Formato Detallado)</h4>';
+        bodyContentHTML += `
+            <div class="pdf-no-break" style="page-break-inside: avoid; padding-top: 8px; padding-bottom: 8px; width: 100%;">
+                <h4 style="border-bottom: 2px solid #10b981; padding-bottom: 4px; margin-top: 0; margin-bottom: 5px;">Estatus de Puntos (Formato Detallado)</h4>
+            </div>`;
 
         // Only export currently visible filtered items
         const currentItems = Array.from(document.querySelectorAll('#sap-table tbody .main-row'))
@@ -587,34 +590,40 @@ window.generatePDF = () => {
 
         const pdfContent = `
             <div style="font-family: 'Inter', sans-serif; padding: 10px; background: white;">
-                <table style="width: 100%; border-bottom: 2px solid #e31837; padding-bottom: 10px; margin-bottom: 15px; border-collapse: collapse;">
-                    <tr>
-                        <td style="width: 25%; text-align: left; vertical-align: middle;">
-                            <img src="${window.DashboardImages && window.DashboardImages['kof_logo'] ? window.DashboardImages['kof_logo'] : 'img/kof-logo.png'}" width="140" height="35" style="display: inline-block; vertical-align: middle;" alt="KOF Logo">
-                        </td>
-                        <td style="width: 50%; text-align: center; vertical-align: middle;">
-                            <h1 style="color: #0f172a; margin: 0; font-size: 16px; text-transform: uppercase;">KOF SAP Operaciones</h1>
-                            <h3 style="color: #64748b; margin: 4px 0 0 0; font-size: 12px; font-weight: 500;">Minuta - Reunión Semanal de Seguimiento</h3>
-                            <p style="color: #94a3b8; font-size: 10px; margin: 4px 0 0 0;">${dynamicPeriodText}</p>
-                        </td>
-                        <td style="width: 25%; text-align: right; vertical-align: middle;">
-                            <img src="${window.DashboardImages && window.DashboardImages['dxc_logo'] ? window.DashboardImages['dxc_logo'] : 'img/dxc-logo.png'}" width="110" height="30" style="display: inline-block; vertical-align: middle;" alt="DXC Logo">
-                        </td>
-                    </tr>
-                </table>
+                <div class="pdf-no-break" style="page-break-inside: avoid; padding-top: 8px; padding-bottom: 8px; width: 100%;">
+                    <table style="width: 100%; border-bottom: 2px solid #e31837; padding-bottom: 10px; margin-bottom: 15px; border-collapse: collapse;">
+                        <tr>
+                            <td style="width: 25%; text-align: left; vertical-align: middle;">
+                                <img src="${window.DashboardImages && window.DashboardImages['kof_logo'] ? window.DashboardImages['kof_logo'] : 'img/kof-logo.png'}" width="140" height="35" style="display: inline-block; vertical-align: middle;" alt="KOF Logo">
+                            </td>
+                            <td style="width: 50%; text-align: center; vertical-align: middle;">
+                                <h1 style="color: #0f172a; margin: 0; font-size: 16px; text-transform: uppercase;">KOF SAP Operaciones</h1>
+                                <h3 style="color: #64748b; margin: 4px 0 0 0; font-size: 12px; font-weight: 500;">Minuta - Reunión Semanal de Seguimiento</h3>
+                                <p style="color: #94a3b8; font-size: 10px; margin: 4px 0 0 0;">${dynamicPeriodText}</p>
+                            </td>
+                            <td style="width: 25%; text-align: right; vertical-align: middle;">
+                                <img src="${window.DashboardImages && window.DashboardImages['dxc_logo'] ? window.DashboardImages['dxc_logo'] : 'img/dxc-logo.png'}" width="110" height="30" style="display: inline-block; vertical-align: middle;" alt="DXC Logo">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
 
-                <div style="margin-bottom: 20px;">
-                    <h4 style="border-bottom: 2px solid #e31837; padding-bottom: 4px; margin-bottom: 8px; font-size: 13px;">Lista de Asistentes</h4>
-                    <div style="display: flex; gap: 20px; font-size: 10px; color: #333;">
-                        <ul style="flex:1; padding-left: 20px; margin: 0;">${col1}</ul>
-                        <ul style="flex:1; padding-left: 20px; margin: 0;">${col2}</ul>
+                <div class="pdf-no-break" style="page-break-inside: avoid; padding-top: 8px; padding-bottom: 8px; width: 100%;">
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="border-bottom: 2px solid #e31837; padding-bottom: 4px; margin-bottom: 8px; font-size: 13px;">Lista de Asistentes</h4>
+                        <div style="display: flex; gap: 20px; font-size: 10px; color: #333;">
+                            <ul style="flex:1; padding-left: 20px; margin: 0;">${col1}</ul>
+                            <ul style="flex:1; padding-left: 20px; margin: 0;">${col2}</ul>
+                        </div>
                     </div>
                 </div>
 
                 ${bodyContentHTML}
 
-                <div style="text-align: center; margin-top: 25px; font-size: 9px; color: #94a3b8;">
-                    Generado automáticamente el ${new Date().toLocaleDateString()}
+                <div class="pdf-no-break" style="page-break-inside: avoid; padding-top: 8px; padding-bottom: 8px; width: 100%;">
+                    <div style="text-align: center; margin-top: 25px; font-size: 9px; color: #94a3b8;">
+                        Generado automáticamente el ${new Date().toLocaleDateString()}
+                    </div>
                 </div>
             </div>
         `;
