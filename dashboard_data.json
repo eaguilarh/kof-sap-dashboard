@@ -33,15 +33,16 @@
             "id": "3",
             "system": "Seguimiento de HANA Financiero BCP",
             "owner": "Carlos Castillo / Talía Rosas",
-            "status": "Sin Incidentes",
+            "status": "Con Incidentes",
             "sla": "Minor",
-            "currentWeek": "24/02 - Sin incidentes en el ambiente productivo y ambientes no productivos.",
-            "prevWeek": "17/02 - Sin incidentes en el ambiente productivo y ambientes no productivos.",
-            "actionItem": "Ninguno",
-            "actionOwner": "-",
-            "commitDate": "-",
+            "currentWeek": "20/3 - Es una prueba",
+            "prevWeek": "24/02 - Sin incidentes en el ambiente productivo y ambientes no productivos.",
+            "actionItem": "continuamos con la prueba",
+            "actionOwner": "Por definir en DXC",
+            "commitDate": "2026-03-31",
             "referenceInfo": "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado según descripción. | Prioridad: Baja",
-            "customComment": ""
+            "customComment": "",
+            "imageCount": 1
         },
         {
             "id": "4",
