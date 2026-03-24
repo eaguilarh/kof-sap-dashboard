@@ -91,8 +91,20 @@ const getSLABadge = (sla) => {
     }
 };
 
+const formatBullets = (text) => {
+    if (!text) return '';
+    const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    if (lines.length === 0) return '';
+    const listItems = lines.map(line => {
+        const cleanedLine = line.replace(/^[•\-\*]\s*/, '');
+        return `<li style="margin-bottom: 4px;">${cleanedLine}</li>`;
+    });
+    return `<ul style="margin: 0; padding-left: 18px; list-style-type: disc;">${listItems.join('')}</ul>`;
+};
+
 let currentData = [];
 let allExpanded = false;
+let isPrevWeekVisible = false; // Estado para la columna de Semana Previa
 let additionalPointsArray = [];
 
 // Initialization
@@ -136,8 +148,24 @@ document.addEventListener('DOMContentLoaded', () => {
             '<i class="fa-solid fa-expand"></i> Expandir Info';
     });
 
+    // Toggle Prev Week logic
+    const toggleBtn = document.getElementById('btn-toggle-prev-week');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            isPrevWeekVisible = !isPrevWeekVisible;
+            const table = document.getElementById('sap-table');
+            if (isPrevWeekVisible) {
+                table.classList.add('show-prev-week');
+                toggleBtn.innerHTML = '<i class="fa-solid fa-eye-slash"></i> Ocultar semana previa';
+            } else {
+                table.classList.remove('show-prev-week');
+                toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i> Mostrar semana previa';
+            }
+        });
+    }
+
     // PDF Export function
-    document.getElementById('btn-export-pdf').addEventListener('click', generatePDF);
+    document.getElementById('btn-export-pdf')?.addEventListener('click', generatePDF);
 });
 
 // Calculate total KPI numbers based on FULL data (so it never resets to 0 when filtered)
@@ -200,6 +228,9 @@ function renderDashboard(dataArray) {
                                  <strong>Comentario Guardado:</strong> ${row.customComment}</div>` : '';
 
 
+        const prevWeekSafe = row.prevWeek ? row.prevWeek.replace(/"/g, '&quot;') : '';
+        const currentWeekSafe = row.currentWeek ? row.currentWeek.replace(/"/g, '&quot;') : '';
+
         // Main Row (No SLA column, Prior/Current week swapped, no truncate class)
         const trMain = document.createElement('tr');
         trMain.className = 'main-row';
@@ -208,8 +239,8 @@ function renderDashboard(dataArray) {
             <td class="col-system" data-label="Sistema / Proyecto">${row.system}</td>
             <td class="col-owner" data-label="Responsables"><i class="fa-regular fa-user" style="margin-right:4px;"></i>${row.owner}</td>
             <td data-label="Estatus Semanal">${getStatusBadge(row.status)}</td>
-            <td title="${row.prevWeek}" data-label="Semana Previa">${row.prevWeek}</td>
-            <td title="${row.currentWeek}" data-label="Evolución en la Semana Actual">${row.currentWeek}</td>
+            <td class="col-prev-week" title="${prevWeekSafe}" data-label="Semana Previa">${formatBullets(row.prevWeek)}</td>
+            <td title="${currentWeekSafe}" data-label="Evolución en la Semana Actual">${formatBullets(row.currentWeek)}</td>
             <td data-label="Detalles">
                 <button class="btn-icon" onclick="toggleDetails(${row.id}, this)">
                     <i class="fa-solid fa-chevron-down chevron-icon"></i>
@@ -484,13 +515,14 @@ window.generatePDF = () => {
                                 <strong>A cargo de:</strong> <span style="color: #475569;">${item.owner}</span>
                             </div>
                             <div style="display: flex; gap: 15px;">
+                                ${isPrevWeekVisible ? `
                                 <div style="flex: 1; min-width: 0;">
                                     <strong style="color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 2px; display: inline-block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">Semana Previa</strong>
-                                    <div style="color: #334155; line-height: 1.6; font-size: 11.5px; white-space: pre-wrap; word-wrap: break-word;">${item.prevWeek}</div>
-                                </div>
+                                    <div style="color: #334155; line-height: 1.6; font-size: 11.5px; word-wrap: break-word;">${formatBullets(item.prevWeek)}</div>
+                                </div>` : ''}
                                 <div style="flex: 1; min-width: 0;">
                                     <strong style="color: #0f172a; border-bottom: 2px solid #3b82f6; padding-bottom: 2px; display: inline-block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">Semana Actual</strong>
-                                    <div style="color: #334155; line-height: 1.6; font-size: 11.5px; font-weight: 500; white-space: pre-wrap; word-wrap: break-word;">${item.currentWeek}</div>
+                                    <div style="color: #334155; line-height: 1.6; font-size: 11.5px; font-weight: 500; word-wrap: break-word;">${formatBullets(item.currentWeek)}</div>
                                 </div>
                             </div>
                             ${commentHtml}

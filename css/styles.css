@@ -135,8 +135,8 @@ body.dark-mode .info-desc[style*="background:#fef3c7"] div {
 body {
     background-color: var(--bg-body);
     color: var(--text-main);
-    line-height: 1.6;
-    font-size: 14px;
+    line-height: 1.75;
+    font-size: clamp(14px, 1.2vw, 15px);
     padding: 20px;
 }
 
@@ -438,8 +438,23 @@ tbody tr.main-row:hover {
 }
 
 tbody tr.main-row td {
-    padding: 16px 24px;
+    padding: 20px 24px;
     vertical-align: middle;
+}
+
+/* Specific Bullet Point Styling */
+#sap-table ul {
+    margin: 0;
+    padding-left: 18px;
+    list-style-type: disc;
+}
+
+#sap-table li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+}
+#sap-table li:last-child {
+    margin-bottom: 0;
 }
 
 /* Styling for specific columns */
@@ -451,6 +466,18 @@ tbody tr.main-row td {
 .col-system {
     font-weight: 600;
     color: var(--text-main);
+}
+
+.col-prev-week {
+    display: none; /* Oculto por defecto */
+}
+
+/* Cuando la tabla tiene la clase show-prev-week, mostramos la columna */
+.sap-table.show-prev-week th.col-prev-week,
+.sap-table.show-prev-week td.col-prev-week,
+#sap-table.show-prev-week th.col-prev-week,
+#sap-table.show-prev-week td.col-prev-week {
+    display: table-cell;
 }
 
 .col-owner {
@@ -862,11 +889,19 @@ tbody tr.main-row td {
 
     .table-actions {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #btn-toggle-prev-week {
+        display: none !important; /* Hide toggle on mobile */
     }
 
     .table-actions .btn {
         width: 100%;
         justify-content: center;
+        margin-right: 0 !important;
     }
 
     /* Responsive Data Table - Convert to Cards */
@@ -900,12 +935,20 @@ tbody tr.main-row td {
         position: relative;
     }
 
-    .sap-table td {
+    .sap-table td, #sap-table td {
         border-bottom: none;
-        padding: 4px 0;
+        padding: 6px 0;
         text-align: left;
-        font-size: 13px;
-        line-height: 1.4;
+        font-size: 15px; /* Larger font size for mobile readability */
+        line-height: 1.6;
+    }
+
+    /* Ocultar columnas secundarias nativamente en móvil (priorizar semana actual y estatus) */
+    .sap-table td.col-owner, #sap-table td.col-owner,
+    .sap-table th.col-owner, #sap-table th.col-owner,
+    .sap-table td.col-prev-week, #sap-table td.col-prev-week,
+    .sap-table th.col-prev-week, #sap-table th.col-prev-week {
+        display: none !important;
     }
 
     /* Simulate Column headers using data-labels */
