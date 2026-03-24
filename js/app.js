@@ -210,7 +210,7 @@ function renderDashboard(dataArray) {
             let galleryHTML = '<div class="ref-gallery">';
             for (let i = 1; i <= rowImageCount; i++) {
                 const timestamp = new Date().getTime(); // Cache busting
-                const imgSrc = (window.DashboardImages && window.DashboardImages[`ref_${row.id}_${i}`]) ? window.DashboardImages[`ref_${row.id}_${i}`] : `img/ref_${row.id}_${i}.png?v=${timestamp}`;
+                const imgSrc = `img/ref_${row.id}_${i}.png?v=${timestamp}`;
                 galleryHTML += `<img src="${imgSrc}" class="ref-thumbnail" onclick="openLightboxGallery('${row.id}', ${i - 1})" title="Clic para ampliar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                                 <span class="fallback-text" style="display:none; color: var(--text-muted); font-size: 11px;">(Falta img/ref_${row.id}_${i}.png)</span>`;
             }
