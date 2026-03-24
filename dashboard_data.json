@@ -1,4 +1,4 @@
-﻿{
+{
     "value": [
         {
             "id": "1",
@@ -8,9 +8,9 @@
             "sla": "Minor",
             "currentWeek": "24/3 - \nSAP ECC`S - Carga de Datos en tabla ZARIX (propuesta de mantener un mes en línea).",
             "prevWeek": "17/3 - \nSAP ECC`S - Carga de Datos en tabla ZARIX (propuesta de mantener un mes en línea).",
-            "actionItem": "* pendiente 1\n* pendiente 2\n* pendiente 3.1416",
-            "actionOwner": "DXC",
-            "commitDate": "2026-03-27",
+            "actionItem": "Ninguno",
+            "actionOwner": "-",
+            "commitDate": "-",
             "referenceInfo": "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
             "customComment": "",
             "imageCount": 2
@@ -23,9 +23,9 @@
             "sla": "Minor",
             "currentWeek": "24/3 - \nLunes 23 de marzo. Indisponibilidad de Portal BC4 por password inconsistente del usuario sybbc4 para levantar la aplicación posterior al Respaldo Offline.",
             "prevWeek": "17/3 - \nSin incidentes en el ambiente productivo y ambientes no productivos.",
-            "actionItem": "Es de prueba",
-            "actionOwner": "Es de prueba",
-            "commitDate": "2026-03-31",
+            "actionItem": "Ninguno",
+            "actionOwner": "-",
+            "commitDate": "-",
             "referenceInfo": "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado según descripción. | Prioridad: Baja",
             "customComment": ""
         },
@@ -37,9 +37,9 @@
             "sla": "Minor",
             "currentWeek": "24/3 - \nSin incidentes en el ambiente productivo y ambientes no productivos.",
             "prevWeek": "17/3 - \nSin incidentes en el ambiente productivo y ambientes no productivos.",
-            "actionItem": "test",
-            "actionOwner": "TBD",
-            "commitDate": "2026-03-24",
+            "actionItem": "Ninguno",
+            "actionOwner": "-",
+            "commitDate": "-",
             "referenceInfo": "Tipo: Operativo | Justificación SLA: Evento reportado; impacto acotado según descripción. | Prioridad: Baja",
             "customComment": "",
             "imageCount": 0
