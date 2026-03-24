@@ -1,4 +1,4 @@
-{
+﻿{
     "value": [
         {
             "id": "1",
@@ -246,8 +246,8 @@
             "owner": "Abraham Mora / Seguridad DXC",
             "status": "Con Incidentes",
             "sla": "Minor",
-            "currentWeek": "24/3 - \nVulnerabilidades Qualys\n1).- Scan Qualys.\nSemana del 13/03/2026 al 23/03/2026",
-            "prevWeek": "17/Mar - Vulnerabilidades Qualys \n1).- Scan Qualys.\nSemana del 11/03/2026 al 17/03/2026",
+            "currentWeek": "24/3 - \nVulnerabilidades Qualys\nScan Qualys. Semana del 13/03/2026 al 23/03/2026",
+            "prevWeek": "17/Mar - Vulnerabilidades Qualys \nScan Qualys. Semana del 11/03/2026 al 17/03/2026",
             "actionItem": "Revisar tablas y gráficos para remediación.",
             "actionOwner": "Abraham Mora",
             "commitDate": "-",
