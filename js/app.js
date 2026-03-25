@@ -119,8 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => {
             dashboardData = data.value || data;
+            additionalPointsArray = data.additionalPoints || [];
             currentData = [...dashboardData];
             renderDashboard(currentData);
+            window.renderAdditionalPoints();
         })
         .catch(err => {
             console.error("Error loading dashboard data:", err);
@@ -227,6 +229,10 @@ function renderDashboard(dataArray) {
             `<div class="info-desc" style="background:#fef3c7; border-left: 3px solid #f59e0b; margin-top: 12px; margin-bottom: 12px;">
                                  <strong>Comentario Guardado:</strong> ${row.customComment}</div>` : '';
 
+        let displayPrevWeek = formatBullets(row.prevWeek);
+        if (row.customComment) {
+            displayPrevWeek += `<div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #cbd5e1; color: var(--status-yellow-text); font-weight: 500; font-size: 13px;"><i class="fa-solid fa-comment-dots"></i> Comentarios: ${row.customComment}</div>`;
+        }
 
         const prevWeekSafe = row.prevWeek ? row.prevWeek.replace(/"/g, '&quot;') : '';
         const currentWeekSafe = row.currentWeek ? row.currentWeek.replace(/"/g, '&quot;') : '';
@@ -239,7 +245,7 @@ function renderDashboard(dataArray) {
             <td class="col-system" data-label="Sistema / Proyecto">${row.system}</td>
             <td class="col-owner" data-label="Responsables"><i class="fa-regular fa-user" style="margin-right:4px;"></i>${row.owner}</td>
             <td data-label="Estatus Semanal">${getStatusBadge(row.status)}</td>
-            <td class="col-prev-week" title="${prevWeekSafe}" data-label="Semana Previa">${formatBullets(row.prevWeek)}</td>
+            <td class="col-prev-week" title="${prevWeekSafe}" data-label="Semana Previa">${displayPrevWeek}</td>
             <td title="${currentWeekSafe}" data-label="Evolución en la Semana Actual">${formatBullets(row.currentWeek)}</td>
             <td data-label="Detalles">
                 <button class="btn-icon" onclick="toggleDetails(${row.id}, this)">
@@ -426,7 +432,7 @@ window.saveAdditionalPoint = () => {
     const inputEl = document.getElementById('additional-points-input');
     const val = inputEl.value.trim();
     if (val) {
-        additionalPointsArray.push(val);
+        additionalPointsArray.push({ id: Date.now(), text: val, completed: false });
         inputEl.value = '';
         window.renderAdditionalPoints();
 
@@ -435,17 +441,34 @@ window.saveAdditionalPoint = () => {
     }
 };
 
+window.toggleAdditionalPoint = (index) => {
+    if (additionalPointsArray[index]) {
+        // Handle migration from string to object gracefully
+        if (typeof additionalPointsArray[index] === 'string') {
+            additionalPointsArray[index] = { id: Date.now(), text: additionalPointsArray[index], completed: true };
+        } else {
+            additionalPointsArray[index].completed = !additionalPointsArray[index].completed;
+        }
+        window.renderAdditionalPoints();
+    }
+};
+
 window.renderAdditionalPoints = () => {
     const container = document.getElementById('additional-comments-container');
     container.innerHTML = '';
 
     additionalPointsArray.forEach((pt, index) => {
-        const formattedValue = pt.replace(/\n/g, '<br>');
+        const isCompleted = pt.completed;
+        const iconClass = isCompleted ? 'fa-square-check' : 'fa-square';
+        const textStyle = isCompleted ? 'text-decoration: line-through; color: #94a3b8;' : 'color: #334155;';
+        const textVal = typeof pt === 'string' ? pt : pt.text;
+        const formattedValue = textVal.replace(/\n/g, '<br>');
+
         container.innerHTML += `
-             <div class="info-desc" style="background:#fef3c7; border-left: 3px solid #f59e0b; margin-bottom: 15px; position: relative; padding-right: 40px;">
-                 <strong style="color: #b45309;">Punto Adicional ${index + 1}:</strong><br/> 
-                 <div style="line-height: 1.5; margin-top: 5px; color: #334155;">${formattedValue}</div>
-                 <button onclick="removeAdditionalPoint(${index})" style="position: absolute; top: 12px; right: 12px; background: none; border: none; color: #ef4444; cursor: pointer; font-size: 14px; padding: 4px; border-radius: 4px;" title="Eliminar" onmouseover="this.style.backgroundColor='#fecaca'" onmouseout="this.style.backgroundColor='transparent'">
+             <div class="info-desc" style="background:#fef3c7; border-left: 3px solid #f59e0b; margin-bottom: 15px; position: relative; padding-right: 40px; cursor: pointer; user-select: none;" onclick="toggleAdditionalPoint(${index})">
+                 <strong style="color: #b45309; display: flex; align-items: center; gap: 6px;"><i class="fa-regular ${iconClass}" style="font-size: 16px;"></i> Punto Adicional ${index + 1}:</strong> 
+                 <div style="line-height: 1.5; margin-top: 5px; ${textStyle}">${formattedValue}</div>
+                 <button onclick="removeAdditionalPoint(${index}); event.stopPropagation();" style="position: absolute; top: 12px; right: 12px; background: none; border: none; color: #ef4444; cursor: pointer; font-size: 14px; padding: 4px; border-radius: 4px;" title="Eliminar" onmouseover="this.style.backgroundColor='#fecaca'" onmouseout="this.style.backgroundColor='transparent'">
                      <i class="fa-solid fa-trash"></i>
                  </button>
              </div>
@@ -494,14 +517,6 @@ window.generatePDF = () => {
             const isItem25 = (item.id === "25" || item.id === 25);
             const boxMarginBottom = isItem25 ? '15px' : '5px';
 
-            let commentHtml = '';
-            if (item.customComment && item.customComment !== '') {
-                commentHtml = `
-                    <div class="pdf-no-break" style="page-break-inside: avoid; padding-top: 10px; padding-bottom: 6px;">
-                        <div style="background-color:#fef3c7; color:#b45309; padding:8px 12px; font-weight:600; border-radius:4px; font-size:11px; border-left: 3px solid #f59e0b;">Comentario a la minuta: ${item.customComment}</div>
-                    </div>`;
-            }
-
             let textContentHtml = `
                     <div class="pdf-no-break" style="page-break-inside: avoid; padding-top: 6px; padding-bottom: 6px; width: 100%;">
                         <div style="border: 1px solid #cbd5e1; border-radius: 6px; overflow: hidden; display: block; box-shadow: 0 1px 2px rgba(0,0,0,0.05); background-color: #ffffff;">
@@ -518,14 +533,16 @@ window.generatePDF = () => {
                                 ${isPrevWeekVisible ? `
                                 <div style="flex: 1; min-width: 0;">
                                     <strong style="color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 2px; display: inline-block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">Semana Previa</strong>
-                                    <div style="color: #334155; line-height: 1.6; font-size: 11.5px; word-wrap: break-word;">${formatBullets(item.prevWeek)}</div>
+                                    <div style="color: #334155; line-height: 1.6; font-size: 11.5px; word-wrap: break-word;">
+                                        ${formatBullets(item.prevWeek)}
+                                        ${item.customComment && item.customComment !== '' ? `<div style="margin-top: 6px; padding-top: 6px; border-top: 1px dashed #cbd5e1; color: #b45309; font-weight: 600; font-size: 11px;">Comentario Guardado: ${item.customComment}</div>` : ''}
+                                    </div>
                                 </div>` : ''}
                                 <div style="flex: 1; min-width: 0;">
                                     <strong style="color: #0f172a; border-bottom: 2px solid #3b82f6; padding-bottom: 2px; display: inline-block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase;">Semana Actual</strong>
                                     <div style="color: #334155; line-height: 1.6; font-size: 11.5px; font-weight: 500; word-wrap: break-word;">${formatBullets(item.currentWeek)}</div>
                                 </div>
                             </div>
-                            ${commentHtml}
                         </div>
                     </div>
                 </div>
@@ -595,11 +612,13 @@ window.generatePDF = () => {
         if (additionalPointsArray.length > 0) {
             let pointsHTML = '';
             additionalPointsArray.forEach((pt, index) => {
-                const formattedText = pt.replace(/\n/g, '<br>');
+                const textVal = typeof pt === 'string' ? pt : pt.text;
+                const formattedText = textVal.replace(/\n/g, '<br>');
+                const checkedStr = pt.completed ? '☑' : '☐';
                 pointsHTML += `
                     <div style="margin-bottom: 15px;">
-                        <strong style="color: #b45309; font-size: 11px;">Punto Adicional ${index + 1}:</strong>
-                        <div style="color: #334155; line-height: 1.5; margin-top: 4px;">${formattedText}</div>
+                        <strong style="color: #b45309; font-size: 11px;">${checkedStr} Punto Adicional ${index + 1}:</strong>
+                        <div style="color: #334155; line-height: 1.5; margin-top: 4px; ${pt.completed ? 'text-decoration: line-through;' : ''}">${formattedText}</div>
                     </div>
                 `;
             });
@@ -626,7 +645,6 @@ window.generatePDF = () => {
                     <table style="width: 100%; border-bottom: 2px solid #e31837; padding-bottom: 10px; margin-bottom: 15px; border-collapse: collapse;">
                         <tr>
                             <td style="width: 25%; text-align: left; vertical-align: middle;">
-                                <img src="${window.DashboardImages && window.DashboardImages['kof_logo'] ? window.DashboardImages['kof_logo'] : 'img/kof-logo.png'}" width="140" height="35" style="display: inline-block; vertical-align: middle;" alt="KOF Logo">
                             </td>
                             <td style="width: 50%; text-align: center; vertical-align: middle;">
                                 <h1 style="color: #0f172a; margin: 0; font-size: 16px; text-transform: uppercase;">KOF SAP Operaciones</h1>

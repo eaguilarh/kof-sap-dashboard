@@ -1,4 +1,4 @@
-﻿{
+{
     "value": [
         {
             "id": "1",
@@ -159,7 +159,7 @@
         {
             "id": "12",
             "system": "PI",
-            "owner": "Guadalupe Argüelles / Talía Rosas",
+            "owner": "Daniel Ponce / Talía Rosas",
             "status": "Sin Incidentes",
             "sla": "Critical",
             "currentWeek": "24/3 - \nSin incidentes en ambientes productivos y no productivos.",
@@ -361,8 +361,8 @@
             "owner": "Luis Muñoz / Teresa López",
             "status": "En Proceso",
             "sla": "Critical",
-            "currentWeek": "24/3 - \nEn espera de siguientes pasos después de que se compartió la información de los servidores para las\ncuentas privilegiadas PAM por SIA.",
-            "prevWeek": "17/3 - \nEn espera de siguientes pasos después de que se compartió la información de los servidores para las\ncuentas privilegiadas PAM por SIA.",
+            "currentWeek": "24/3 - \nEn espera de siguientes pasos después de que se compartió la información de los servidores para las cuentas privilegiadas PAM por SIA.",
+            "prevWeek": "17/3 - \nEn espera de siguientes pasos después de que se compartió la información de los servidores para las cuentas privilegiadas PAM por SIA.",
             "actionItem": "Seguimiento de ticket PAM (Teams).",
             "actionOwner": "Teresa López",
             "commitDate": "2026-02-28",
@@ -510,6 +510,13 @@
             "commitDate": "-",
             "referenceInfo": "Tipo: Operativo | Justificación SLA: Actividad operativa en curso | Prioridad: Baja",
             "customComment": ""
+        }
+    ],
+    "additionalPoints": [
+        {
+            "id": 1,
+            "text": "Ejemplo de acción a seguir de la junta",
+            "completed": false
         }
     ],
     "Count": 36

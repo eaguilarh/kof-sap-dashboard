@@ -136,7 +136,7 @@ body {
     background-color: var(--bg-body);
     color: var(--text-main);
     line-height: 1.75;
-    font-size: clamp(15px, 1.3vw, 17px);
+    font-size: clamp(16px, 1.5vw, 19px);
     padding: 20px;
 }
 
@@ -412,7 +412,7 @@ table {
 th {
     padding: 16px 24px;
     background: #f8fafc;
-    font-size: 13px;
+    font-size: 15px;
     text-transform: uppercase;
     color: var(--text-muted);
     font-weight: 600;
@@ -481,12 +481,12 @@ tbody tr.main-row td {
 }
 
 .col-owner {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-muted);
 }
 
 .col-text-truncate {
-    font-size: 13px;
+    font-size: 14px;
     color: var(--text-muted);
     /* Remove text truncation per request to show full content */
 }
@@ -619,7 +619,7 @@ tbody tr.main-row td {
 }
 
 .info-box h4 {
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
     color: var(--text-muted);
     font-weight: 700;
@@ -646,7 +646,7 @@ tbody tr.main-row td {
     padding: 8px 12px;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 14px;
     outline: none;
     transition: var(--transition);
 }
@@ -760,15 +760,17 @@ tbody tr.main-row td {
     font-size: 40px;
     cursor: pointer;
     border: none;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0.3;
     padding: 10px 20px;
     border-radius: 8px;
     z-index: 10001;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
 }
 
 .lightbox-nav:hover {
     background: rgba(0, 0, 0, 0.8);
+    opacity: 1;
 }
 
 .lightbox-prev {
@@ -788,7 +790,7 @@ tbody tr.main-row td {
 
 .info-item label {
     display: block;
-    font-size: 11px;
+    font-size: 12px;
     text-transform: uppercase;
     color: var(--text-light);
     margin-bottom: 4px;
