@@ -515,7 +515,7 @@
     "additionalPoints": [
         {
             "id": 1,
-            "text": "Ejemplo de acción a seguir de la junta",
+            "text": "Los problemas o issues detectados, es importante que queden fixed",
             "completed": false
         }
     ],
